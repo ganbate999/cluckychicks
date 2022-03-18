@@ -13,7 +13,7 @@ contract ChicksStaking is Ownable {
   using SafeMath for uint256;
 
   // ERC20 Reward Token
-  address     public _eggContract;
+  address     public _eggAddress;
   address     public _chicksAddress;
   Egg         _eggContract;
   Chicks      _chicksContract;
@@ -46,7 +46,7 @@ contract ChicksStaking is Ownable {
 
   constructor(address _chicksAddress, address _eggAddress) {
     setEggContract(_eggAddress);
-    setChichsContract(_chicksAddress);    
+    setChicksContract(_chicksAddress);    
   }
 
 
@@ -64,7 +64,7 @@ contract ChicksStaking is Ownable {
     _eggContract =  Egg(_eggAddress);
   }
 
-  function setChichsContract(address chicksAddress) external onlyOwner{
+  function setChicksContract(address chicksAddress) external onlyOwner{
     _chicksAddress = chicksAddress;
     _chicksContract = Chicks(chicksAddress);
   }
@@ -74,7 +74,7 @@ contract ChicksStaking is Ownable {
     uint256 _tokenId
   ) external isAllowedStaking {
     
-    require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
+    //require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
     _stake(msg.sender, _tokenId);
   }
 
