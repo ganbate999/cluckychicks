@@ -13,8 +13,10 @@ contract ChicksStaking is Ownable {
   using SafeMath for uint256;
 
   // ERC20 Reward Token
-  Egg     public _eggContract;
-  Chicks  public _chicksContract;
+  address     public _eggContract;
+  address     public _chicksAddress;
+  Egg         _eggContract;
+  Chicks      _chicksContract;
   mapping(address => mapping(uint256 => uint256)) stakerToken;
   mapping(address => uint256[]) stakers;
 
@@ -42,9 +44,9 @@ contract ChicksStaking is Ownable {
     _;
   }
 
-  constructor(Chicks chicksContract, Egg eggContract) {
-    _eggContract = eggContract; 
-    _chicksContract = chicksContract;
+  constructor(address _chicksAddress, address _eggAddress) {
+    setEggContract(_eggAddress);
+    setChichsContract(_chicksAddress);    
   }
 
 
@@ -57,18 +59,21 @@ contract ChicksStaking is Ownable {
   }
 
 
-  function setEggContract(Egg eggContract) external onlyOwner{
-    _eggContract = eggContract;
+  function setEggContract(address eggAddress) external onlyOwner{
+    _eggAddress = eggAddress; 
+    _eggContract =  Egg(_eggAddress);
   }
 
-  function setChichsContract(Chicks chicksContract) external onlyOwner{
-    _chicksContract = chicksContract;
+  function setChichsContract(address chicksAddress) external onlyOwner{
+    _chicksAddress = chicksAddress;
+    _chicksContract = Chicks(chicksAddress);
   }
 
   /// @notice Stake NFTs and earn reward tokens.
   function stake(
     uint256 _tokenId
   ) external isAllowedStaking {
+    
     require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
     _stake(msg.sender, _tokenId);
   }
@@ -150,7 +155,7 @@ contract ChicksStaking is Ownable {
     uint256 amount = 0;
     if(stakerToken[user][tokenId] != 0){
       uint256 stakedTime = stakerToken[user][tokenId];
-      uint _days = (block.timestamp - stakedTime)/60/60/24;
+      uint _days = (block.timestamp - stakedTime)/60;  // /60/60/24
       if(tokenId < 7){
         amount = 3 * _days;
       }else if(tokenId < 51){

@@ -26,6 +26,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
   });
 
+
+  //0x75Aa8C1211088d76D498327EFa9bD5B604c831a8
+  //0xFb92c3a735A945fe1d5f975308d6B15b53a21397
+  //0xeE4b35CAE6389F2aA2442891Ce9F672E8865011C
   /*
     // Getting a previously deployed contract
     const YourContract = await ethers.getContract("YourContract", deployer);
@@ -62,4 +66,4 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   */
 };
-module.exports.tags = ["ChicksStaking"];
+module.exports.tags = ["Chicks","Egg", "ChicksStaking"];
