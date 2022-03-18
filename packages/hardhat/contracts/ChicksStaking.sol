@@ -21,10 +21,10 @@ contract ChicksStaking is Ownable {
   mapping(address => uint256[]) stakers;
 
   // Turn staking on/off
-  bool public allowStaking;
+  bool public allowStaking = true;
 
   // Turn claim reward on/off
-  bool public allowClaiming;
+  bool public allowClaiming= true;
 
   // @notice event emitted when a user has staked a token
   event Staked(address owner, uint256 amount);
@@ -59,12 +59,12 @@ contract ChicksStaking is Ownable {
   }
 
 
-  function setEggContract(address eggAddress) external onlyOwner{
+  function setEggContract(address eggAddress) public onlyOwner{
     _eggAddress = eggAddress; 
     _eggContract =  Egg(_eggAddress);
   }
 
-  function setChicksContract(address chicksAddress) external onlyOwner{
+  function setChicksContract(address chicksAddress) public onlyOwner{
     _chicksAddress = chicksAddress;
     _chicksContract = Chicks(chicksAddress);
   }
