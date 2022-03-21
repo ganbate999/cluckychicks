@@ -74,7 +74,7 @@ contract ChicksStaking is Ownable {
     uint256 _tokenId
   ) external isAllowedStaking {
     
-    //require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
+    require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
     _stake(msg.sender, _tokenId);
   }
 
@@ -86,6 +86,7 @@ contract ChicksStaking is Ownable {
     uint256 _tokenId
   ) internal {
     require (user == msg.sender ||  msg.sender == owner(), "Wrong Sender");
+    _chicksContract.isApprovedForAll(user, address(this));
     _chicksContract.transferFrom(user, address(this), _tokenId);
     stakerToken[user][_tokenId] = block.timestamp;
     stakers[user].push(_tokenId);
