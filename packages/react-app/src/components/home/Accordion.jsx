@@ -15,13 +15,14 @@ export default function Accordion ({ title, children, index, selectedIndex, setS
 
   const handleClickView = () => {
     setSelectedIndex(index)
+    setOpen(!isOpen);
   }
   
   return (
     <div className="accordion-item">
       <div className={`accordion-title ${isOpen ? "open" : ""}`} onClick={() => handleClickView()}>
         <div className='accordionTitle'>{title}</div>
-        <div>{isOpen ? <i className='fas fa-minus'></i> : <i className='fas fa-angle-double-down'></i>}</div>
+        <div>{isOpen ? <img src='./assets/image/angle.png' width='15px' height='15px' /> : <img src='./assets/image/minus.svg' width='15px' height='15px' /> }</div>
       </div>
       <div className={`accordion-con-item ${!isOpen ? "collapsed" : ""}`}>
         <div className="accordion-content">{children}</div>

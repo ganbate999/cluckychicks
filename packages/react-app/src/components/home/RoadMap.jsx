@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from '@iconify/react';
+// import { Icon } from '@iconify/react';
 import './style.css'
 
 export default function RoadMap() {
@@ -80,7 +80,8 @@ export default function RoadMap() {
               <p>
                 Clucky Chicks will initially launch a total collection of 10,000, however, we have MANY ideas in store for this project. A varied Coop will be an asset. <br />
                 You are going to want to collect these Chicks because we have great utility between the Chicks as well as future additions.
-                <Icon icon="noto:eyes" />
+          
+                <img src='./assets/image/eye.svg' width='15px' height='15px' />
               </p>
               
             </div>
@@ -96,7 +97,7 @@ export default function RoadMap() {
           </div>
           <div className="chatbtnBox">
             <a href="https://discord.gg/7d8tkcu7QM">
-              <Icon icon="fontisto:discord"  style={{ width: '20px', height: '20px', marginRight: '10px' }} />
+              <img src='./assets/image/discord1.png' width='20px' height='20px' style={{ marginRight: '10px' }} />
               COME CHAT WITH US
             </a>
           </div>

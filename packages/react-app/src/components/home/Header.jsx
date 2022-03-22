@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import { Icon } from '@iconify/react';
+// import { Icon } from '@iconify/react';
 import { ConnectWallet } from "./";
 
 export default function Header({
@@ -30,17 +30,17 @@ const toggleMobileMenu = () => {
             <div className="head-contact">
                 <a href="https://discord.gg/7d8tkcu7QM">
                     <span className="discord">
-                        <Icon icon="fontisto:discord"  style={{ width: '32px', height: '32px' }} />
+                        <img src='./assets/image/discord.png' width='30px' height='30px' />
                     </span>
                 </a>
                 <a href="https://twitter.com/CluckyChicksNFT">
                     <span className="twitter">
-                        <Icon icon="akar-icons:twitter-fill" style={{ width: '32px', height: '32px' }} />
+                        <img src='./assets/image/twitter.png' width='30px' height='30px' />
                     </span>
                 </a>
                 <a href="mailto:paul@cluckychicks.app">
                     <span className="mailbox">
-                        <Icon icon="fluent:mail-28-filled" style={{ width: '32px', height: '32px' }} />
+                        <img src='./assets/image/mail.png' width='30px' height='30px' />
                     </span>
                 </a>
             </div>
@@ -62,7 +62,6 @@ const toggleMobileMenu = () => {
                   signer={userSigner}
                   remainTokenCount={remainTokenCount}
                 />
-                {/* <a href="#">CONNECT WALLET</a> */}
             </div>
         </header>
         <div className="mainmenu">
@@ -71,10 +70,10 @@ const toggleMobileMenu = () => {
             <div className="mobileMenu">
                 <div className="mobile_icon" onClick={toggleMobileMenu}>
                     {mobilemenuOpen && (
-                        <Icon icon="uil:multiply" color="#ffe14b" width="24" height="24" />
+                        <img src='./assets/image/multiply.png' width='20px' height='20px' />
                     )}
                     {!mobilemenuOpen && (
-                        <Icon icon="typcn:th-menu" color="#ffe14b" width="24" height="24" />
+                        <img src='./assets/image/menu.png' width='20px' height='20px' />
                     )}
                 </div>
 
