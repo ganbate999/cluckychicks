@@ -38,8 +38,9 @@ export default function ConnectWallet({
             border: 'none'
           }}
           className="connect_status light"
+          onClick={logoutOfWeb3Modal}
         >
-          {accountEllipsis}
+          DISCONNECT
         </Button>,
       );
     } else {

@@ -1,4 +1,5 @@
 import React from "react";
+import { StakeNFTSlider } from './';
 
 export default function Stake() {
 
@@ -19,12 +20,41 @@ export default function Stake() {
       </div>
       <div className="stakeBox">
         <div className="innerstakeBox">
-          <div className="imgBox">
-            <img src="./assets/image/Clucky-Chicks-Fight.webp" />
-          </div>
-          <div className="stakeText">
-            <p>STAKING AVAILABLE ON LAUNCH!</p>
-          </div>
+          {
+            false && (
+              <>
+                <div className="imgBox">
+                  <img src="./assets/image/Clucky-Chicks-Fight.webp" />
+                </div>
+                <div className="stakeText">
+                  <p>STAKING AVAILABLE ON LAUNCH!</p>
+                </div>
+              </>
+            )
+          }
+          {
+            true && (
+              <>
+                <div className="Text-stake">
+                  <div className="stakeNFT-text">
+                    <p>Your Tokens: 1000</p>
+                    <p>Staked Tokens: 1000</p>
+                  </div>
+                  <div className="stakeNFT-text">
+                    <p>Reward Eggs: 1000</p>
+                    <p>Reward Eggs: 1000</p>
+                  </div>
+                </div>
+
+                <div className="imgNFTBox">
+                  <StakeNFTSlider />
+                </div>
+                <div>
+                  <a className="all-claim-btn">Claim All</a>
+                </div>
+              </>
+            )
+          }
         </div>
       </div>
     </div>

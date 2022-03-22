@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children, ...props }) => {
 
   const GlobalStyle = createGlobalStyle`
 
-    @media (min-width: 578px) {
+    @media (max-width: 768px) {
       /** Mozilla scrollbar*/
       * {
         scrollbar-color: #CCC !important;

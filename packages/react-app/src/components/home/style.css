@@ -198,6 +198,7 @@
     color: #000;
     line-height: 22px;
     margin-bottom: 0;
+    margin-top: 0;
 }
 .mint-image img {
     width: 100%;
@@ -255,7 +256,7 @@
     .mintTitle {
         font-size: 39px;
     }
-    .mintSubtitle {
+    .mintSubtitle, .mintSubtitle1{
         font-size: 15px;
     }
 }
@@ -307,6 +308,10 @@
     display: flex;
     align-items: center;
 }
+.innerstakeBox {
+    width: 100%;
+    padding-bottom: 10px;
+}
 .imgBox {
     padding: 10px;
 }
@@ -323,6 +328,117 @@
 }
 .stakeBox p {
     margin: auto;
+}
+.imgNFTBox {
+    width: 70%;
+    margin: auto;
+}
+.NFTitem img {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin: auto;
+}
+.all-claim-btn {
+    padding: 9px 50px;
+    font-size: 25px;
+    font-family: "Titan One", Sans-serif;
+    font-weight: inherit;
+    background: #000;
+    color: #ffe14b;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.all-claim-btn:hover {
+    background-color: #55595c;
+}
+.nftstake-btn {
+    padding: 7px 30px;
+    font-size: 25px;
+    font-family: "Titan One", Sans-serif;
+    font-weight: inherit;
+    background: #000;
+    color: #ffe14b;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.nftstake-btn:hover {
+    background-color: #55595c;
+}
+.NFTitem {
+    height: 500px;
+}
+.Text-stake {
+    display: flex;
+    justify-content: space-around;
+}
+.stakeNFT-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.stakeNFT-text p {
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Titan One", Sans-serif;
+    margin: 10px 0;
+}
+@media (min-width: 769px) {
+    .imgNFTBox {
+        width: 80%;
+        margin-top: 70px;
+    }
+    .NFTitem img {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 30px;
+    }
+    .NFTitem {
+        height: 400px;
+    }
+}
+@media (min-width: 900px) {
+    .imgNFTBox {
+        width: 80%;
+        margin-top: 70px;
+    }
+    .NFTitem img {
+        width: 350px;
+        height: 350px;
+        margin-bottom: 30px;
+    }
+    .NFTitem {
+        height: 450px;
+    }
+}
+@media (min-width: 1200px) {
+    .imgNFTBox {
+        width: 60%;
+        margin-top: 70px;
+    }
+    .NFTitem img {
+        width: 350px;
+        height: 350px;
+        margin-bottom: 30px;
+    }
+    .NFTitem {
+        height: 450px;
+    }
+}
+@media (min-width: 1300px) {
+    .imgNFTBox {
+        width: 60%;
+        margin-top: 0px;
+    }
+    .NFTitem img {
+        width: 400px;
+        height: 400px;
+        margin-bottom: 30px;
+    }
+    .NFTitem {
+        height: 500px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -354,14 +470,39 @@
         text-align: center;
         padding: 10px 10px;
     }
-    
+    .stakeNFT-text p {
+        color: #000;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: "Titan One", Sans-serif;
+        margin: 10px 0;
+    }
+    .imgNFTBox {
+        width: 60%;
+        margin-bottom: 20px;
+    }
+    .NFTitem img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .NFTitem {
+        height: auto;
+    }
+    .nftstake-btn {
+        padding: 3px 30px;
+        font-size: 25px;
+    }
+    .all-claim-btn {
+        margin: 20px 0;
+    }
 }
 
 /* NFT slider style */
 .nftsliderContainer {
     margin: 20px 0;
 }
-.slick-arrow {
+.nftsliderContainer .slick-arrow {
     display: none !important;
 }
 .Ritem img {

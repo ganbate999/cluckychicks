@@ -11,3 +11,4 @@ export { default as ConnectWallet } from "./ConnectWallet";
 export { default as LtRSlider } from "./LtRSlider";
 export { default as RtLSlider } from "./RtLSlider";
 export { default as Accordion } from "./Accordion";
+export { default as StakeNFTSlider } from "./StakeNFTSlider";
