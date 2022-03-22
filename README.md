@@ -1,4 +1,4 @@
-# 🏗 BluBoyX-ETH
+# 🏗 CluckyChicks
 
 > everything you need to build on Ethereum! 🚀
 
@@ -33,7 +33,7 @@ yarn deploy
 yarn etherscan-verify --network rinkeby
 ```
 
-🔏 Edit your smart contract `BluBoyX.sol` in `./contracts`
+🔏 Edit your smart contract `CluckyChicks.sol` in `./contracts`
 
 💼 Edit your deployment scripts in `./deploy`
 
