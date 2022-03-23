@@ -37,7 +37,7 @@ export default function Mint({
   const mintNftHandler = async () => {
     setMinting(true);
     try {
-      const mintFunction = contract.connect(signer)["mint"];
+      const mintFunction = contract["Chicks"].connect(signer)["mint"];
       const hash = await mintFunction(address, mintCount, {
         value: parseEther((amount * mintCount).toString()),
       });
@@ -59,7 +59,7 @@ export default function Mint({
       {
         (web3Modal && web3Modal.cachedProvider) && (
           <div className="mint-part">
-            <h2>{8889 - remainTokenCount}/8888</h2>
+            <h2>{10000 - remainTokenCount}/10000</h2>
             <div className="mint-count">
               <a onClick={_decreaseMintCount}>-</a>
               <h2>{mintCount}</h2>

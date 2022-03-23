@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\task\\talking\\cluckychicks\\packages\\hardhat\\contracts\\Chicks.sol": {
-      "lastModificationDate": 1647527047436,
-      "contentHash": "50e69483eef5f3b5454d0728fe268452",
+      "lastModificationDate": 1648020645120,
+      "contentHash": "586c2876556ba87e6942ce4b5a1eed66",
       "sourceName": "contracts/Chicks.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -573,8 +573,8 @@
       ]
     },
     "D:\\task\\talking\\cluckychicks\\packages\\hardhat\\contracts\\ChicksStaking.sol": {
-      "lastModificationDate": 1647527135044,
-      "contentHash": "fb7aa9f613c618c8b64a705db99ee641",
+      "lastModificationDate": 1648025402476,
+      "contentHash": "1ff0bcaae14ccff94d2dd1e2b59991f0",
       "sourceName": "contracts/ChicksStaking.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -709,7 +709,7 @@
       ]
     },
     "D:\\task\\talking\\cluckychicks\\packages\\hardhat\\contracts\\Egg.sol": {
-      "lastModificationDate": 1647527064206,
+      "lastModificationDate": 1647926580780,
       "contentHash": "cf669a3bf6f861b4c11f30f98fc71edf",
       "sourceName": "contracts/Egg.sol",
       "solcConfig": {

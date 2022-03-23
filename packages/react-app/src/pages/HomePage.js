@@ -6,7 +6,7 @@ function HomePage(props) {
       <div className="Home">
           <Header {...props} />
           <Mint {...props} />
-          <Stake />
+          <Stake {...props} />
           <NFTSlider />
           <RoadMap />
           <CluckyVerse />

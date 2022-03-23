@@ -17,8 +17,8 @@ contract ChicksStaking is Ownable {
   address     public _chicksAddress;
   Egg         _eggContract;
   Chicks      _chicksContract;
-  mapping(address => mapping(uint256 => uint256)) stakerToken;
-  mapping(address => uint256[]) stakers;
+  mapping(address => mapping(uint256 => uint256)) public stakerToken;
+  mapping(address => uint256[]) public stakers;
 
   // Turn staking on/off
   bool public allowStaking = true;
@@ -95,7 +95,7 @@ contract ChicksStaking is Ownable {
 
   function unstake(address user, uint256 _tokenId) external {
     require (user == msg.sender ||  msg.sender == owner(), "Wrong Sender");
-    require(stakerToken[user][_tokenId] > block.timestamp, 'Sender must have staked tokenID');
+    require(stakerToken[user][_tokenId] < block.timestamp, 'Sender must have staked tokenID');
     _claimReward(user, _tokenId);
     _unstake(user, _tokenId);
   }
@@ -152,7 +152,7 @@ contract ChicksStaking is Ownable {
   }
 
   function getRewardedToken(address user, uint256 tokenId) public view returns (uint256){
-    require(stakerToken[user][tokenId] != 0,  'Sender must have staked NFT');
+    // require(stakerToken[user][tokenId] != 0,  'Sender must have staked NFT');
     uint256 amount = 0;
     if(stakerToken[user][tokenId] != 0){
       uint256 stakedTime = stakerToken[user][tokenId];
@@ -169,7 +169,7 @@ contract ChicksStaking is Ownable {
   }
 
   function getAllRewardedToken(address user) public view returns (uint256){
-    require(stakers[user].length != 0,  'Sender must have staked NFT');
+    // require(stakers[user].length != 0,  'Sender must have staked NFT');
     uint256 amount = 0; 
     for(uint i = 0; i < stakers[user].length; i++){
       amount += getRewardedToken(user, stakers[user][i]);
@@ -178,7 +178,7 @@ contract ChicksStaking is Ownable {
   }
 
   function calcRewardPerDay(address user) public view returns (uint256){
-    require(stakers[user].length != 0,  'Sender must have staked NFT');
+    // require(stakers[user].length != 0,  'Sender must have staked NFT');
     uint256 amount = 0;
     for(uint i = 0; i < stakers[user].length; i++){
       if(stakers[user][i] < 7){

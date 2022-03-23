@@ -22,7 +22,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await deploy("ChicksStaking", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
-    args: [chicksContract, eggContract],
+    args: [chicksContract.address, eggContract.address],
     log: true,
   });
 

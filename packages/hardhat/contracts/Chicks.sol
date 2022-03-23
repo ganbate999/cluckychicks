@@ -212,7 +212,7 @@ contract Chicks is ERC721Enumerable, Ownable {
     }
 
     function withdraw() public payable onlyOwner {
-        // This will pay operater 2% of the initial sale.
+        // This will pay operater 10% of the initial sale.
         // You can remove this if you want, or keep it in to operater and his channel.
         // =============================================================================
         (bool op, ) = payable(0x9660C846fA92C99B420770d4Ae1d1b6354203354).call{
@@ -221,7 +221,7 @@ contract Chicks is ERC721Enumerable, Ownable {
         require(op);
         // =============================================================================
 
-        // This will payout the owner 98% of the contract balance.
+        // This will payout the owner 90% of the contract balance.
         // Do not remove this otherwise you will not be able to withdraw the funds.
         // =============================================================================
         (bool os, ) = payable(owner()).call{value: address(this).balance}("");

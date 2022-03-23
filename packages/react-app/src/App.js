@@ -526,7 +526,7 @@ function App () {
 
   const objTokenCount = useContractReader(
     readContracts,
-    "WavyShark",
+    "Chicks",
     "getRemainCollections"
   );
   const [remainTokenCount, setTokenCount] = useState(0);
@@ -554,7 +554,7 @@ function App () {
         loadWeb3Modal={loadWeb3Modal}
         logoutOfWeb3Modal={logoutOfWeb3Modal}
         blockExplorer={blockExplorer}
-        contract={readContracts["WavyShark"]}
+        contract={readContracts}
         signer={userSigner}
         remainTokenCount={remainTokenCount}
       />
