@@ -953,7 +953,7 @@
           ]
         },
         "ChicksStaking": {
-          "address": "0xA20680e41b1D19ac5002C0a1dAAC40345a29FAf9",
+          "address": "0xdff7e022B1Dd9Ff96cc454c3d5BE4884832559fE",
           "abi": [
             {
               "inputs": [
@@ -1150,6 +1150,19 @@
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "cycleTime",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -1190,6 +1203,19 @@
                 }
               ],
               "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getStakeUsers",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "nonpayable",
               "type": "function"
             },
             {
@@ -1268,6 +1294,25 @@
               "name": "stake",
               "outputs": [],
               "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "stakeUsers",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
               "type": "function"
             },
             {

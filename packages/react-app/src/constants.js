@@ -6,7 +6,7 @@ export const ETHERSCAN_KEY = "RWIGN91M429FD37DDEZTBX3NZ56YKX987P";
 
 // BLOCKNATIVE ID FOR Notify.js:
 export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
-export const NFT_IMAGE_URL = "https://gateway.pinata.cloud/ipfs/QmXTuL3oGwfGJE8QvippgU3rNwv3Fh6rFkuuH6dczPKjAw/";
+export const NFT_IMAGE_URL = "https://cluckychicks.mypinata.cloud/ipfs/QmYy4dDsy53nSp5mXYSPAcMWLH4v2e5JAoZbqn6QDDjdcj/";
 export const NFT_IMAGE_EXTENSION = ".jpg";
 export const ETH_VAL = 0.05;
 

@@ -17,8 +17,11 @@ contract ChicksStaking is Ownable {
   address     public _chicksAddress;
   Egg         _eggContract;
   Chicks      _chicksContract;
+
+  address[]   public stakeUsers;
   mapping(address => mapping(uint256 => uint256)) public stakerToken;
   mapping(address => uint256[]) public stakers;
+  uint        public cycleTime = 86400; //86400
 
   // Turn staking on/off
   bool public allowStaking = true;
@@ -78,6 +81,33 @@ contract ChicksStaking is Ownable {
     _stake(msg.sender, _tokenId);
   }
 
+
+  function addStakeUsers(address user) internal{
+    bool isIn = false;
+    for(uint i =0; i< stakeUsers.length; i++){
+      if(stakeUsers[i] == user){
+        isIn = true;
+      }
+    }
+    if(!isIn) {
+      stakeUsers.push(user);
+    }
+  } 
+
+  function getStakeUsers() external returns (address[] memory){
+    address[] memory users;
+    uint index = 0;
+    for(uint i =0; i< stakeUsers.length; i++){
+      if(stakers[stakeUsers[i]].length == 0){
+        delete stakeUsers[i];
+      }else{
+        users[index] = stakeUsers[i];
+        index++;
+      }
+    }
+    return users;
+  }
+
   /**
    * @dev All the staking goes through this function
    */
@@ -88,8 +118,10 @@ contract ChicksStaking is Ownable {
     require (user == msg.sender ||  msg.sender == owner(), "Wrong Sender");
     _chicksContract.isApprovedForAll(user, address(this));
     _chicksContract.transferFrom(user, address(this), _tokenId);
+    addStakeUsers(user);
     stakerToken[user][_tokenId] = block.timestamp;
     stakers[user].push(_tokenId);
+  
     emit Staked(user, _tokenId);
   }
 
@@ -156,7 +188,7 @@ contract ChicksStaking is Ownable {
     uint256 amount = 0;
     if(stakerToken[user][tokenId] != 0){
       uint256 stakedTime = stakerToken[user][tokenId];
-      uint _days = (block.timestamp - stakedTime)/60;  // /60/60/24
+      uint _days = (block.timestamp - stakedTime)/cycleTime;  // /60/60/24
       if(tokenId < 7){
         amount = 3 * _days;
       }else if(tokenId < 51){
