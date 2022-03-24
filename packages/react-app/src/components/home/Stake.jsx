@@ -127,7 +127,7 @@ export default function Stake({
       <div className="stakeBox">
         <div className="innerstakeBox">
           {
-            mintedTokens.length == 0 && (
+            nftData.length == 0 && (
               <>
                 <div className="imgBox">
                   <img src="./assets/image/Clucky-Chicks-Fight.webp" />
@@ -139,7 +139,7 @@ export default function Stake({
             )
           }
           {
-            mintedTokens.length != 0 && (
+            nftData.length != 0 && (
               <>
                 <div className="Text-stake">
                   <div className="stakeNFT-text">
