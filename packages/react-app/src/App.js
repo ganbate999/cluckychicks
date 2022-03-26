@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import HomePage from './pages/HomePage';
+import StakingPage from './pages/StakingPage';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import WalletLink from "walletlink";
 import { Alert, Button } from "antd";
@@ -60,18 +62,18 @@ if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
 // Using StaticJsonRpcProvider as the chainId won't change see https://github.com/ethers-io/ethers.js/issues/901
 const scaffoldEthProvider = navigator.onLine
   ? new ethers.providers.StaticJsonRpcProvider(
-      "https://rpc.scaffoldeth.io:48544"
-    )
+    "https://rpc.scaffoldeth.io:48544"
+  )
   : null;
 const poktMainnetProvider = navigator.onLine
   ? new ethers.providers.StaticJsonRpcProvider(
-      "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406"
-    )
+    "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406"
+  )
   : null;
 const mainnetInfura = navigator.onLine
   ? new ethers.providers.StaticJsonRpcProvider(
-      "https://mainnet.infura.io/v3/" + INFURA_ID
-    )
+    "https://mainnet.infura.io/v3/" + INFURA_ID
+  )
   : null;
 // ( ⚠️ Getting "failed to meet quorum" errors? Check your INFURA_ID
 // 🏠 Your local provider is usually pointed at your local blockchain
@@ -168,13 +170,13 @@ const web3Modal = new Web3Modal({
   },
 });
 
-function App () {
+function App() {
   const mainnetProvider =
     poktMainnetProvider && poktMainnetProvider._isProvider
       ? poktMainnetProvider
       : scaffoldEthProvider && scaffoldEthProvider._network
-      ? scaffoldEthProvider
-      : mainnetInfura;
+        ? scaffoldEthProvider
+        : mainnetInfura;
 
   const [injectedProvider, setInjectedProvider] = useState();
   const [address, setAddress] = useState();
@@ -544,22 +546,44 @@ function App () {
   // const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="App">
-      <HomePage
-        address={address}
-        localProvider={localProvider}
-        userSigner={userSigner}
-        mainnetProvider={mainnetProvider}
-        price={price}
-        web3Modal={web3Modal}
-        loadWeb3Modal={loadWeb3Modal}
-        logoutOfWeb3Modal={logoutOfWeb3Modal}
-        blockExplorer={blockExplorer}
-        contract={readContracts}
-        signer={userSigner}
-        remainTokenCount={remainTokenCount}
-      />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <HomePage
+              address={address}
+              localProvider={localProvider}
+              userSigner={userSigner}
+              mainnetProvider={mainnetProvider}
+              price={price}
+              web3Modal={web3Modal}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}
+              blockExplorer={blockExplorer}
+              contract={readContracts}
+              signer={userSigner}
+              remainTokenCount={remainTokenCount}
+            />
+          </Route>
+          <Route exact path="/staking">
+            <StakingPage
+              address={address}
+              localProvider={localProvider}
+              userSigner={userSigner}
+              mainnetProvider={mainnetProvider}
+              price={price}
+              web3Modal={web3Modal}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}
+              blockExplorer={blockExplorer}
+              contract={readContracts}
+              signer={userSigner}
+              remainTokenCount={remainTokenCount}
+            />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
