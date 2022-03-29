@@ -1,5 +1,5 @@
 import React, { useState ,useEffect  } from "react";
-import { StakeNFTSlider } from '.';
+import { AddStake, RemoveStake } from '.';
 import { NFT_IMAGE_URL, NFT_IMAGE_EXTENSION } from "../../constants";
 import "./staking-style.css";
 
@@ -25,6 +25,11 @@ export default function Staking({
   const [totalEggs, totalEggState] = useState(0);
   const [nftData,   setNFTState] = useState([{}]);
   const [claiming, setClaming] = useState(false);
+
+  const [totalStake, setTotalStake] = useState(0);
+  const [totalremoveStake, setTotalRemoveStake] = useState(0);
+  const [stakedata, setStakeData] = useState([]);
+  const [staking,  setStaking] = useState(false);
 
   const setNFTData = () => {
     var data = [];
@@ -103,6 +108,7 @@ export default function Staking({
     try {
       const stakeFunction = contract["ChicksStaking"].connect(signer)["claimAll"];
       const hash = await stakeFunction(address);
+      totalEggState(0);
       setClaming(false);
     } catch (e) {
       setClaming(false);
@@ -110,72 +116,131 @@ export default function Staking({
     }
   };
 
-  const _nftData = [
-    {
-      id: 1,
-      imageUrl: './assets/image/1.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
-    },
-    {
-      id:2,
-      imageUrl: './assets/image/2.png'
-    },
-    {
-      id:3,
-      imageUrl: './assets/image/3.png'
+  // const _nftData = [
+  //   {
+  //     tokenId: 1,
+  //     imageUrl: './assets/image/1.png',
+  //     isStaked: true
+  //   },
+  //   {
+  //     tokenId:2,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: true
+  //   },
+  //   {
+  //     tokenId:3,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:4,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:5,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:6,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:7,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:8,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:9,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:10,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:11,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:12,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:13,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:14,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:15,
+  //     imageUrl: './assets/image/2.png',
+  //     isStaked: false
+  //   },
+  //   {
+  //     tokenId:16,
+  //     imageUrl: './assets/image/3.png',
+  //     isStaked: false
+  //   }
+  // ];
+
+  const approveHandler = async () => {
+    try {
+        const approveFunction = contract["Chicks"].connect(signer)["setApprovalForAll"];
+        const hash = await approveFunction(contract["ChicksStaking"].address, true);
+    } catch (e) {
+        console.log(e);
     }
-  ];
+    };
+    
+  const stakeHandler = async (tokenId) => {
+    setStaking(true);
+    try {
+      await approveHandler();
+      const stakeFunction = contract["ChicksStaking"].connect(signer)["stake"];
+      const hash = await stakeFunction(tokenId);
+        setStaking(false);
+    } catch (e) {
+        setStaking(false);
+      console.log(e);
+    }
+  };
+  
+  const stakeSomeHandler = (e) => {
+    if(stakedata.length > 0) {
+      for(var j = 0; j< stakedata.length; j++){
+        stakeHandler(stakedata[j]);
+      }
+      setTotalStake(0);
+    } else {
+      console.log(e);
+    }
+  };
+
+  const stakeAllHandler = () => {
+    setStakeData([]);
+    nftData.map((data) => {
+      if(!data.isStaked){
+        setStakeData(stakedata => [...stakedata, data.tokenId]);
+      }
+    });
+    stakeSomeHandler();
+  };
 
   return (
     <div className="" id="">
@@ -190,14 +255,14 @@ export default function Staking({
                 </a>
                 <a href="#">
                   <img src="./assets/image/waterdrop1.png" />
-                  DAILY&nbsp;RATE: 0
+                  DAILY&nbsp;RATE: {dailyEggs}
                 </a>
-                <a href="#">CLAIM (0&nbsp;$EGG)</a>
+                <a href="#" onClick={claimAllHandler}>CLAIM ({totalEggs}&nbsp;$EGG)</a>
             </div>
             <div className="bottom-btns">
-                <a href="#">STAKE (0)</a>
-                <a href="#">STAKE ALL</a>
-                <a href="#">UNSTAKE (0)</a>
+                <a href="#" onClick={stakeSomeHandler}>STAKE ({totalStake})</a>
+                <a href="#" onClick={stakeAllHandler}>STAKE ALL</a>
+                <a href="#">UNSTAKE ({totalremoveStake})</a>
             </div>
             <div className="group-arrow">
               <div className="arrow-stake"></div>
@@ -206,12 +271,26 @@ export default function Staking({
             </div>
         </div>
         <div className="group-NFT">
-            {_nftData.map((data, index) => (
+            {nftData.map((data, index) => (
               <div className="staking-nft-list" key={index}>
-                <p>#6</p>
+                <p>#{data.tokenId}</p>
                 <img src={data.imageUrl} width="200px" height="200px" />
                 <p>3 $EGG / Day</p>
-                <button>ADD TO STAKE</button>
+                {data.isStaked && 
+                  <RemoveStake 
+                  totalremoveStake={totalremoveStake}
+                  setTotalRemoveStake={setTotalRemoveStake}
+                  />
+                }
+                {!data.isStaked && 
+                  <AddStake
+                    stakedata={stakedata}
+                    setStakeData={setStakeData}
+                    tokenId={data.tokenId}
+                    totalStake={totalStake}
+                    setTotalStake={setTotalStake}
+                  />
+                }
               </div>
             ))}
         </div>
