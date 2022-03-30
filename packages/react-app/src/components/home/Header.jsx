@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./style.css";
 import { ConnectWallet } from "./";
+import { HomePage } from "../../pages/HomePage"
 
 export default function Header({
     address,
@@ -80,11 +81,11 @@ const toggleMobileMenu = () => {
                     <div className={`mobile_ul ${!mobilemenuOpen ? "collapsed" : ""}`}>
                         <ul>
                             <li><Link to="/">HOME</Link></li>
-                            <li><a href="#mintContainer">MINT</a></li>
+                            <li><a href="/#mintContainer">MINT</a></li>
                             <li><Link to="/staking">STAKE</Link></li>
-                            <li><a href="#stakeContainer">JOIN</a></li>
-                            <li><a href="#roadmapContainer">ROADMAP</a></li>
-                            <li><a href="#faqContainer">FAQ</a></li>
+                            <li><a href="/#stakeContainer">JOIN</a></li>
+                            <li><a href="/#roadmapContainer">ROADMAP</a></li>
+                            <li><a href="/#faqContainer">FAQ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,11 +93,11 @@ const toggleMobileMenu = () => {
                 <div className="desktopMenu">
                     <ul>
                         <li><Link to="/">HOME</Link></li>
-                        <li><a href="#mintContainer">MINT</a></li>
+                        <li><a href="/#mintContainer">MINT</a></li>
                         <li><Link to="/staking">STAKE</Link></li>
-                        <li><a href="#stakeContainer">JOIN</a></li>
-                        <li><a href="#roadmapContainer" className="test_class">ROADMAP</a></li>
-                        <li><a href="#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li>
+                        <li><a href="/#stakeContainer">JOIN</a></li>
+                        <li><a href="/#roadmapContainer">ROADMAP</a></li>
+                        <li><a href="/#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li>
                     </ul>
                 </div>
                 

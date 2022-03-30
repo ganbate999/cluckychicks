@@ -73,6 +73,16 @@ contract ChicksStaking is Ownable {
   }
 
   /// @notice Stake NFTs and earn reward tokens.
+  function stakeArray(
+    uint256[] _tokenIds
+  ) external isAllowedStaking {
+    
+    require(_chicksContract.getNFTUser(_tokenId) == msg.sender || msg.sender == owner(), "Sender is not owner of current NFT token");
+    for(uint i =0; i < _tokenIds.length; i++){
+      _stake(msg.sender, _tokenIds[i]);
+    }
+  }
+
   function stake(
     uint256 _tokenId
   ) external isAllowedStaking {
@@ -125,11 +135,21 @@ contract ChicksStaking is Ownable {
     emit Staked(user, _tokenId);
   }
 
+
   function unstake(address user, uint256 _tokenId) external {
     require (user == msg.sender ||  msg.sender == owner(), "Wrong Sender");
     require(stakerToken[user][_tokenId] < block.timestamp, 'Sender must have staked tokenID');
     _claimReward(user, _tokenId);
     _unstake(user, _tokenId);
+  }
+
+  function unstakeArray(address user, uint256[] _tokenIds) external {
+    require (user == msg.sender ||  msg.sender == owner(), "Wrong Sender");
+    for(uint i =0; i < _tokenIds.length; i++){
+      require(stakerToken[user][_tokenIds[i]] < block.timestamp, 'Sender must have staked tokenID');
+      _claimReward(user, _tokenIds[i]);
+      _unstake(user, _tokenIds[i]);  
+    }
   }
 
   /**

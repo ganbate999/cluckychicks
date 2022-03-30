@@ -1,5 +1,5 @@
 import React, { useState ,useEffect  } from "react";
-import { AddStake, RemoveStake } from '.';
+import { StakeButton } from '.';
 import { NFT_IMAGE_URL, NFT_IMAGE_EXTENSION } from "../../constants";
 import "./staking-style.css";
 
@@ -29,23 +29,27 @@ export default function Staking({
   const [totalStake, setTotalStake] = useState(0);
   const [totalremoveStake, setTotalRemoveStake] = useState(0);
   const [stakedata, setStakeData] = useState([]);
+  const [unstakedata, setUnStakeData] = useState([]);
   const [staking,  setStaking] = useState(false);
+  const [unStaking, setUnStaking] = useState(false);
 
   const setNFTData = () => {
     var data = [];
     
     for(var j = 0; j< stakedTokens.length; j++){
-      var _subdata = {"tokenId" : "", "imageUrl" : "", isStaked: false};
+      var _subdata = {"tokenId" : "", "imageUrl" : "", isStaked: false, isDisabled: false};
       _subdata.tokenId = stakedTokens[j];
       _subdata.imageUrl = NFT_IMAGE_URL + stakedTokens[j] + NFT_IMAGE_EXTENSION;
       _subdata.isStaked = true;
+      _subdata.isDisabled = false;
       data.push(_subdata);
     }
     for(var i = 0; i< mintedTokens.length; i++){
-      var _subdata = {"tokenId" : "", "imageUrl" : "", isStaked: false};
+      var _subdata = {"tokenId" : "", "imageUrl" : "", isStaked: false, isDisabled: false};
       _subdata.tokenId = mintedTokens[i];
       _subdata.imageUrl = NFT_IMAGE_URL + mintedTokens[i] + NFT_IMAGE_EXTENSION;
       _subdata.isStaked = false;
+      _subdata.isDisabled = false;
       data.push(_subdata);
     }
     
@@ -108,6 +112,7 @@ export default function Staking({
     try {
       const stakeFunction = contract["ChicksStaking"].connect(signer)["claimAll"];
       const hash = await stakeFunction(address);
+      await hash.wait();
       totalEggState(0);
       setClaming(false);
     } catch (e) {
@@ -115,89 +120,6 @@ export default function Staking({
       console.log(e);
     }
   };
-
-  // const _nftData = [
-  //   {
-  //     tokenId: 1,
-  //     imageUrl: './assets/image/1.png',
-  //     isStaked: true
-  //   },
-  //   {
-  //     tokenId:2,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: true
-  //   },
-  //   {
-  //     tokenId:3,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:4,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:5,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:6,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:7,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:8,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:9,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:10,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:11,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:12,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:13,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:14,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:15,
-  //     imageUrl: './assets/image/2.png',
-  //     isStaked: false
-  //   },
-  //   {
-  //     tokenId:16,
-  //     imageUrl: './assets/image/3.png',
-  //     isStaked: false
-  //   }
-  // ];
 
   const approveHandler = async () => {
     try {
@@ -211,22 +133,32 @@ export default function Staking({
   const stakeHandler = async (tokenId) => {
     setStaking(true);
     try {
-      await approveHandler();
+      let approve = await approveHandler();
+      // if(approve === undefined) return
       const stakeFunction = contract["ChicksStaking"].connect(signer)["stake"];
+      console.log("stakeFunction=>", stakeFunction)
       const hash = await stakeFunction(tokenId);
-        setStaking(false);
+      await hash.wait();
+      let index = nftData.findIndex(obj => obj.tokenId == tokenId)
+      // console.log(index)
+      // nftData[index].isStaked = true;
+      nftData[index].isDisabled = false;
+      setStaking(false);
     } catch (e) {
         setStaking(false);
       console.log(e);
     }
   };
-  
-  const stakeSomeHandler = (e) => {
+
+  const stakeSomeHandler = async (e) => {
     if(stakedata.length > 0) {
       for(var j = 0; j< stakedata.length; j++){
-        stakeHandler(stakedata[j]);
+        let index = nftData.findIndex(obj => obj.tokenId == stakedata[j])
+        nftData[index].isDisabled = true;
+        await stakeHandler(stakedata[j]);
       }
       setTotalStake(0);
+      // window.location.reload(false);
     } else {
       console.log(e);
     }
@@ -236,11 +168,43 @@ export default function Staking({
     setStakeData([]);
     nftData.map((data) => {
       if(!data.isStaked){
-        setStakeData(stakedata => [...stakedata, data.tokenId]);
+        setStakeData(stakedata => [...stakedata, {tokenId: data.tokenId, fnSet: true}]);
       }
     });
+    console.log("allstakedata=>", stakedata)
     stakeSomeHandler();
   };
+
+  const unStakeHandler = async () => {
+    setUnStaking(true);
+    console.log("unstakedata=>", unstakedata)
+    try {
+      const unstakeFunction = contract["ChicksStaking"].connect(signer)["unstakeArray"];
+      console.log("unstakeFunction=>", unstakeFunction)
+      const hash = await unstakeFunction(address, unstakedata);
+      await hash.wait();
+      setUnStaking(false);
+      setTotalRemoveStake(0);
+      window.location.reload(false);
+    } catch (e) {
+      setUnStaking(false);
+      console.log(e);
+    }
+  };
+
+  // const unstakeSomeHandler = async (e) => {
+  //   if(unstakedata.length > 0) {
+  //     for(var j = 0; j< unstakedata.length; j++){
+  //       let index = nftData.findIndex(obj => obj.tokenId == unstakedata[j].tokenId)
+  //       nftData[index].isDisabled = true;
+  //       await unStakeHandler(unstakedata[j].tokenId);
+  //     }
+  //     setTotalRemoveStake(0);
+  //     window.location.reload(false);
+  //   } else {
+  //     console.log(e);
+  //   }
+  // };
 
   return (
     <div className="" id="">
@@ -257,12 +221,12 @@ export default function Staking({
                   <img src="./assets/image/waterdrop1.png" />
                   DAILY&nbsp;RATE: {dailyEggs}
                 </a>
-                <a href="#" onClick={claimAllHandler}>CLAIM ({totalEggs}&nbsp;$EGG)</a>
+                <a href="#" onClick={claimAllHandler}>{claiming ? 'CLAIMING...' : 'CLAIM (' + totalEggs + '$EGG)'}</a>
             </div>
             <div className="bottom-btns">
-                <a href="#" onClick={stakeSomeHandler}>STAKE ({totalStake})</a>
+                <a href="#" onClick={stakeSomeHandler}>{staking ? 'STAKING...' : 'STAKE (' + totalStake + ')' }</a>
                 <a href="#" onClick={stakeAllHandler}>STAKE ALL</a>
-                <a href="#">UNSTAKE ({totalremoveStake})</a>
+                <a href="#" onClick={unStakeHandler}>{unStaking ? 'UNSTAKING...' : 'UNSTAKE (' + totalremoveStake + ')'}</a>
             </div>
             <div className="group-arrow">
               <div className="arrow-stake"></div>
@@ -276,21 +240,20 @@ export default function Staking({
                 <p>#{data.tokenId}</p>
                 <img src={data.imageUrl} width="200px" height="200px" />
                 <p>3 $EGG / Day</p>
-                {data.isStaked && 
-                  <RemoveStake 
+
+                <StakeButton
+                  isStaked={data.isStaked}
+                  tokenId={data.tokenId}
+                  totalStake={totalStake}
+                  setTotalStake={setTotalStake}
                   totalremoveStake={totalremoveStake}
                   setTotalRemoveStake={setTotalRemoveStake}
-                  />
-                }
-                {!data.isStaked && 
-                  <AddStake
-                    stakedata={stakedata}
-                    setStakeData={setStakeData}
-                    tokenId={data.tokenId}
-                    totalStake={totalStake}
-                    setTotalStake={setTotalStake}
-                  />
-                }
+                  stakedata={stakedata}
+                  setStakeData={setStakeData}
+                  unstakedata={unstakedata}
+                  setUnStakeData={setUnStakeData}
+                  isDisabled={data.isDisabled}
+                />
               </div>
             ))}
         </div>

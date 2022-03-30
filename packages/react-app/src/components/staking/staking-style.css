@@ -98,7 +98,7 @@
 }
 .staking-nft-list img {
     border: 3px solid #000;
-    background-color: red;
+    background-color: transparent;
 }
 .staking-nft-list p {
     font-family: "Titan One", Sans-serif;
@@ -111,4 +111,14 @@
     padding: 5px 14px;
     font-family: "Titan One", Sans-serif;
     font-size: 15px;
+}
+
+.toggle-staking-btn {
+    cursor: pointer;
+}
+
+.toggle-staking-btn:disabled {
+    background: gray;
+    color: #000;
+    cursor: no-drop;
 }
