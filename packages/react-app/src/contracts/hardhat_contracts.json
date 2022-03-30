@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "Chicks": {
-          "address": "0x147A525FFa149D9de149Ca655065C2C1C6FC810a",
+          "address": "0x33F8EB2425E9629F328a74B149e1260688011CBe",
           "abi": [
             {
               "inputs": [
@@ -953,7 +953,7 @@
           ]
         },
         "ChicksStaking": {
-          "address": "0xdff7e022B1Dd9Ff96cc454c3d5BE4884832559fE",
+          "address": "0x775c578953e48c2C1eFDBE8023Dee618Ede36fC6",
           "abi": [
             {
               "inputs": [
@@ -1299,6 +1299,19 @@
             {
               "inputs": [
                 {
+                  "internalType": "uint256[]",
+                  "name": "_tokenIds",
+                  "type": "uint256[]"
+                }
+              ],
+              "name": "stakeArray",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
@@ -1404,6 +1417,24 @@
                 }
               ],
               "name": "unstake",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "_tokenIds",
+                  "type": "uint256[]"
+                }
+              ],
+              "name": "unstakeArray",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
