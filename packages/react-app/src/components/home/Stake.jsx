@@ -133,7 +133,7 @@ export default function Stake({
                   <img src="./assets/image/Clucky-Chicks-Fight.webp" />
                 </div>
                 <div className="stakeText">
-                  <p>STAKING AVAILABLE ON LAUNCH!</p>
+                  {/* <p>STAKING AVAILABLE ON LAUNCH!</p> */}
                 </div>
               </>
             )

@@ -130,57 +130,56 @@ export default function Staking({
     }
     };
     
-  const stakeHandler = async (tokenId) => {
+  const stakeHandler = async (tokenIds) => {
     setStaking(true);
+    console.log("StakeData=>", tokenIds)
     try {
       let approve = await approveHandler();
-      // if(approve === undefined) return
-      const stakeFunction = contract["ChicksStaking"].connect(signer)["stake"];
-      console.log("stakeFunction=>", stakeFunction)
-      const hash = await stakeFunction(tokenId);
-      await hash.wait();
-      let index = nftData.findIndex(obj => obj.tokenId == tokenId)
-      // console.log(index)
-      // nftData[index].isStaked = true;
-      nftData[index].isDisabled = false;
-      setStaking(false);
-    } catch (e) {
-        setStaking(false);
-      console.log(e);
-    }
-  };
-
-  const stakeSomeHandler = async (e) => {
-    if(stakedata.length > 0) {
-      for(var j = 0; j< stakedata.length; j++){
-        let index = nftData.findIndex(obj => obj.tokenId == stakedata[j])
+      tokenIds.map((id) => {
+        let index = nftData.findIndex(obj => obj.tokenId == id)
         nftData[index].isDisabled = true;
-        await stakeHandler(stakedata[j]);
-      }
+      })
+      const stakeFunction = contract["ChicksStaking"].connect(signer)["stakeArray"];
+      const hash = await stakeFunction(tokenIds);
+      await hash.wait();
+      setStaking(false);
       setTotalStake(0);
-      // window.location.reload(false);
-    } else {
+      window.location.reload(false);
+    } catch (e) {
+      setStaking(false);
       console.log(e);
     }
   };
 
-  const stakeAllHandler = () => {
-    setStakeData([]);
+  const stakeSomeHandler = async () => {
+    let arr = [];
+    arr = stakedata;
+
+    if(arr.length == 0) return;
+    await stakeHandler(arr);
+  };
+
+  const stakeAllHandler = async () => {
+    let arr = [];
     nftData.map((data) => {
       if(!data.isStaked){
-        setStakeData(stakedata => [...stakedata, {tokenId: data.tokenId, fnSet: true}]);
+        arr.push(data.tokenId);
       }
     });
-    console.log("allstakedata=>", stakedata)
-    stakeSomeHandler();
+    
+    if(arr.length == 0) return;
+    
+    await stakeHandler(arr);
   };
 
   const unStakeHandler = async () => {
     setUnStaking(true);
-    console.log("unstakedata=>", unstakedata)
     try {
+      unstakedata.map((id) => {
+        let index = nftData.findIndex(obj => obj.tokenId == id)
+        nftData[index].isDisabled = true;
+      })
       const unstakeFunction = contract["ChicksStaking"].connect(signer)["unstakeArray"];
-      console.log("unstakeFunction=>", unstakeFunction)
       const hash = await unstakeFunction(address, unstakedata);
       await hash.wait();
       setUnStaking(false);
@@ -191,20 +190,6 @@ export default function Staking({
       console.log(e);
     }
   };
-
-  // const unstakeSomeHandler = async (e) => {
-  //   if(unstakedata.length > 0) {
-  //     for(var j = 0; j< unstakedata.length; j++){
-  //       let index = nftData.findIndex(obj => obj.tokenId == unstakedata[j].tokenId)
-  //       nftData[index].isDisabled = true;
-  //       await unStakeHandler(unstakedata[j].tokenId);
-  //     }
-  //     setTotalRemoveStake(0);
-  //     window.location.reload(false);
-  //   } else {
-  //     console.log(e);
-  //   }
-  // };
 
   return (
     <div className="" id="">
@@ -239,7 +224,7 @@ export default function Staking({
               <div className="staking-nft-list" key={index}>
                 <p>#{data.tokenId}</p>
                 <img src={data.imageUrl} width="200px" height="200px" />
-                <p>3 $EGG / Day</p>
+                <p>{(data.tokenId < 7) ? "3":(data.tokenId < 50) ? "2" : "1"} $EGG / Day</p>
 
                 <StakeButton
                   isStaked={data.isStaked}
