@@ -127,6 +127,9 @@ contract Chicks is ERC721Enumerable, Ownable {
         return remainTokenAmount;
     }
 
+    function getRemainCollections(uint256 remainNFT) public onlyOwner{
+        remainTokenAmount = remainNFT;
+    }
     //to be seen how many nfts user minted and can mint
     function getRemainNFTforUser() public view returns (uint256) {
         uint256 amount;
