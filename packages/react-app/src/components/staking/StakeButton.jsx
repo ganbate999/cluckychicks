@@ -40,7 +40,7 @@ export default function StakeButton ({
 
   return (
     <button onClick={() => handleClickView() } disabled={isDisabled} className='toggle-staking-btn'>
-        {isStaked && (isActive ? 'AGAIN STAKE' : 'REMOVE FROM STAKE')}
+        {isStaked && (isActive ? 'STAKE AGAIN' : 'REMOVE FROM STAKE')}
         {!isStaked && (isActive ? 'UNSTAKE' : 'ADD TO STAKE')}
     </button>
   );
