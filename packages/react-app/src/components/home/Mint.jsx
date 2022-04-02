@@ -72,7 +72,7 @@ export default function Mint({
         )
       }
       <div className="mint-image">
-        <img src="./assets/image/CluckyChicksLineup.webp" />
+        <img src="./assets/image/CluckyChicksLineup.png" />
       </div>
     </div>
   );
