@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "Chicks": {
-          "address": "0xDDF459FD489A62Afc69E18Cc8b2889a6A693e5ce",
+          "address": "0x32d5f037421c28d39782E46a33c93699393F189e",
           "abi": [
             {
               "inputs": [
@@ -966,7 +966,7 @@
           ]
         },
         "ChicksStaking": {
-          "address": "0x35D577600D5554fd7203DE95D9Fc182da476Ab2D",
+          "address": "0xB20C9C12C2de881e94E300F29926349Ba0219477",
           "abi": [
             {
               "inputs": [
@@ -1474,7 +1474,7 @@
           ]
         },
         "Egg": {
-          "address": "0x509CE56Ea7e4474D5c7F6D00095fB33219308Ea3",
+          "address": "0xd7EBe81e68F199653cfAC9b913FF8Da09B1AB23E",
           "abi": [
             {
               "inputs": [],
