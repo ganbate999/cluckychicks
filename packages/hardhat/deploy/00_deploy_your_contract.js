@@ -8,7 +8,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const chicksContract = await deploy("Chicks", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
-    args: ["CluckyChicks", "Clucky Chicks", "https://theunderground.mypinata.cloud/ipfs/QmPpF7hVDqcn4XxKWWGY53xS8fnNL48JdNnmVMHdn7T3gF/"],
+    args: ["CluckyChicks", "Clucky Chicks", "https://cluckychicks.mypinata.cloud/ipfs/QmcZYkrszjk5SymvRTfeYPBfkTLRu518chtJBLykA7e9Zc/"],
     log: true,
   });
 

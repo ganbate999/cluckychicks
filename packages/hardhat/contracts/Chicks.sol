@@ -21,7 +21,7 @@ contract Chicks is ERC721Enumerable, Ownable {
 
     uint256 public cost             =   0.0499 ether;    
     uint256 public maxSupply        =   10000;
-    uint256 public remainTokenAmount=   9951;
+    uint256 public remainTokenAmount=   10000;
     uint256 public maxMintAmount    =   100;   
     uint256 public nftPerAddressLimit=  100;
     uint256 public onlyWhitelisted     = 0;
@@ -127,6 +127,9 @@ contract Chicks is ERC721Enumerable, Ownable {
         return remainTokenAmount;
     }
 
+    function getRemainCollections(uint256 remainNFT) public onlyOwner{
+        remainTokenAmount = remainNFT;
+    }
     //to be seen how many nfts user minted and can mint
     function getRemainNFTforUser() public view returns (uint256) {
         uint256 amount;

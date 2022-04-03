@@ -306,6 +306,19 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "remainNFT",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRemainCollections",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "getRemainNFTforUser",
     "outputs": [

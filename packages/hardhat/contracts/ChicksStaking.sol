@@ -19,6 +19,8 @@ contract ChicksStaking is Ownable {
   Chicks      _chicksContract;
 
   address[]   public stakeUsers;
+  address[]   public apprUsers;
+
   mapping(address => mapping(uint256 => uint256)) public stakerToken;
   mapping(address => uint256[]) public stakers;
   uint        public cycleTime = 86400; //86400
@@ -28,6 +30,8 @@ contract ChicksStaking is Ownable {
 
   // Turn claim reward on/off
   bool public allowClaiming= true;
+
+
 
   // @notice event emitted when a user has staked a token
   event Staked(address owner, uint256 amount);
@@ -254,4 +258,5 @@ contract ChicksStaking is Ownable {
       _claimReward(user, stakers[user][index]);
     }
   }
+
 }

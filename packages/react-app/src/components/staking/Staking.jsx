@@ -207,7 +207,7 @@ export default function Staking({
                   <img src="./assets/image/waterdrop1.png" />
                   DAILY&nbsp;RATE: {dailyEggs}
                 </a>
-                <a href="#" onClick={claimAllHandler}>{claiming ? 'CLAIMING...' : 'CLAIM (' + totalEggs + '$EGG)'}</a>
+                <a href="#" onClick={claimAllHandler}>{claiming ? 'CLAIMING...' : 'CLAIM (' + totalEggs + ' $EGG)'}</a>
             </div>
             <div className="bottom-btns">
                 <a href="#" onClick={stakeSomeHandler}>{staking ? 'STAKING...' : 'STAKE (' + totalStake + ')' }</a>
