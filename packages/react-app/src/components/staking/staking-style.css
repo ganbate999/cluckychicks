@@ -99,6 +99,7 @@
 .staking-nft-list img {
     border: 3px solid #000;
     background-color: transparent;
+    border-radius: 15px;
 }
 .staking-nft-list p {
     font-family: "Titan One", Sans-serif;

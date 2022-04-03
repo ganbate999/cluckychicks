@@ -54,6 +54,7 @@ export default function Staking({
     }
     
     console.log(data);
+    data.sort((a, b) => a.tokenId - b.tokenId);
     return data;
   }
 
