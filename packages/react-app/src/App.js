@@ -52,7 +52,7 @@ const { ethers } = require("ethers");
 // 😬 Sorry for all the console logging
 const DEBUG = true;
 const NETWORKCHECK = true;
-const targetNetwork = NETWORKS.rinkeby;
+const targetNetwork = NETWORKS.mainnet;
 // 🛰 providers
 if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
 // const mainnetProvider = getDefaultProvider("mainnet", { infura: INFURA_ID, etherscan: ETHERSCAN_KEY, quorum: 1 });
