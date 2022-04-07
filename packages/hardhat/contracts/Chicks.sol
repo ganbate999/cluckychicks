@@ -12,7 +12,7 @@ contract Chicks is ERC721Enumerable, Ownable {
 
     // Optional mapping for token URIs  
     mapping (uint256 => string) private _tokenURIs;
-    string public baseURI;
+    string private baseURI;
     string public baseExtension     = ".json";
     string public metaDataFolder    = "";
     string public notRevealedUri    =  "";
@@ -122,12 +122,18 @@ contract Chicks is ERC721Enumerable, Ownable {
         return string(abi.encodePacked(base, Strings.toString(tokenId), baseExtension));
     }
 
+
+    //to be seen how many collections are minted and remained in frontend 
+    function setRareTokenURL(uint256 tokenId, string memory _rareURI)  public onlyOwner {
+        _tokenURIs[tokenId] = _rareURI;
+    }
+
     //to be seen how many collections are minted and remained in frontend 
     function getRemainCollections() public view returns (uint256) {
         return remainTokenAmount;
     }
 
-    function getRemainCollections(uint256 remainNFT) public onlyOwner{
+    function setRemainCollections(uint256 remainNFT) public onlyOwner{
         remainTokenAmount = remainNFT;
     }
     //to be seen how many nfts user minted and can mint

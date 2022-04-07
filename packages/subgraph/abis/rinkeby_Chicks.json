@@ -230,19 +230,6 @@
   },
   {
     "inputs": [],
-    "name": "baseURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "cost",
     "outputs": [
       {
@@ -303,19 +290,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "remainNFT",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRemainCollections",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -737,6 +711,37 @@
       }
     ],
     "name": "setOnlyWhitelisted",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_rareURI",
+        "type": "string"
+      }
+    ],
+    "name": "setRareTokenURL",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "remainNFT",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRemainCollections",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
