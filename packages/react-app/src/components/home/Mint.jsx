@@ -52,12 +52,13 @@ export default function Mint({
   return (
     <div className="mintContainer" id="mintContainer">
       <div className="mint-title">
-        <p className="mintTitle">MINTING - APR 2022</p>
+        {/* <p className="mintTitle">MINTING - APR 2022</p> */}
+        <p className="mintTitle">Releasing 30th April 2022</p>
         <p className="mintSubtitle">CLUCKY CHICKS COST 0.05ETH.</p>
         {!web3Modal.cachedProvider && (<p className="mintSubtitle1"> CONNECT TO THE ETHEREUM NETWORK.</p>)}
       </div>
       {
-        (web3Modal && web3Modal.cachedProvider) && (
+        (false && web3Modal && web3Modal.cachedProvider) && (
           <div className="mint-part">
             <h2>{10000 - remainTokenCount}/10000</h2>
             <div className="mint-count">
