@@ -30,7 +30,7 @@ export default function Header({
         <div className="headerContainer">
             <header className="header">
                 <div className="head-contact">
-                    <a href="https://discord.gg/7d8tkcu7QM">
+                    <a href="/#/discord" target="_blank">
                         <span className="discord">
                             <img src='./assets/image/discord.png' width='30px' height='30px' />
                         </span>

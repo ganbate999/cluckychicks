@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {HashRouter, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import './App.css';
 import HomePage from './pages/HomePage';
 import StakingPage from './pages/StakingPage';
@@ -23,8 +23,7 @@ import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import externalContracts from "./contracts/external_contracts";
-import Portis from "@portis/web3";
-import Fortmatic from "fortmatic";
+import Portis from "@portis/web3"; import Fortmatic from "fortmatic";
 import Authereum from "authereum";
 
 const { ethers } = require("ethers");
@@ -581,6 +580,10 @@ function App() {
               remainTokenCount={remainTokenCount}
             />
           </Route>
+          <Route path='/discord' component={() => {
+            window.location.href = 'https://discord.gg/7d8tkcu7QM';
+            return null;
+          }} />
         </Switch>
       </div>
     </HashRouter>

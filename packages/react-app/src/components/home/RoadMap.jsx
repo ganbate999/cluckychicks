@@ -96,7 +96,7 @@ export default function RoadMap() {
             </div>
           </div>
           <div className="chatbtnBox">
-            <a href="https://discord.gg/7d8tkcu7QM">
+            <a href="/#/discord" target="_blank">
               <img src='./assets/image/discord1.png' width='20px' height='20px' style={{ marginRight: '10px' }} />
               COME CHAT WITH US
             </a>
