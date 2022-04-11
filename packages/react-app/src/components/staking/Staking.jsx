@@ -19,6 +19,7 @@ export default function Staking({
   remainTokenCount,
 }) {
 
+  const [eggBalance, eggBalanceState] = useState(0);
   const [stakedTokens, stakedTokensState] = useState([]);
   const [mintedTokens, mintedTokensState] = useState([]);
   const [dailyEggs, dailyEggState] = useState(0);
@@ -70,6 +71,11 @@ export default function Staking({
     async function getUserMintState(){
       if(address){
         try {
+          //get user balance egg tokens
+          // const result = await contract.methods.balanceOf(walletAddress).call();
+          const balanceFunc = contract["Egg"].connect(signer)["balanceOf"];
+          const balance = await balanceFunc(address);
+          eggBalanceState((parseInt(balance["_hex"]) / (10**18)).toFixed(2));
           //Get user minted tokens
           const mintedTokenFunc = contract["Chicks"].connect(signer)["walletOfOwner"];
           const mintedTokenIds = await mintedTokenFunc(address);
@@ -126,6 +132,7 @@ export default function Staking({
     try {
         const approveFunction = contract["Chicks"].connect(signer)["setApprovalForAll"];
         const hash = await approveFunction(contract["ChicksStaking"].address, true);
+        await hash.wait();
     } catch (e) {
         console.log(e);
     }
@@ -135,11 +142,11 @@ export default function Staking({
     setStaking(true);
     console.log("StakeData=>", tokenIds)
     try {
-      let approve = await approveHandler();
       tokenIds.map((id) => {
         let index = nftData.findIndex(obj => obj.tokenId == id)
         nftData[index].isDisabled = true;
       })
+      await approveHandler();
       const stakeFunction = contract["ChicksStaking"].connect(signer)["stakeArray"];
       const hash = await stakeFunction(tokenIds);
       await hash.wait();
@@ -199,20 +206,20 @@ export default function Staking({
         </div>
         <div className="group-btn">
             <div className="top-btns">
-                <a href="#">
+                <a >
                   <img src="./assets/image/waterdrop1.png" />
-                  BALANCE: 0
+                  BALANCE: {eggBalance}
                 </a>
-                <a href="#">
+                <a >
                   <img src="./assets/image/waterdrop1.png" />
                   DAILY&nbsp;RATE: {dailyEggs}
                 </a>
-                <a href="#" onClick={claimAllHandler}>{claiming ? 'CLAIMING...' : 'CLAIM (' + totalEggs + ' $EGG)'}</a>
+                <a onClick={claimAllHandler}>{claiming  ? 'CLAIMING...' : 'CLAIM: (' + totalEggs + ' $EGG)'}</a>
             </div>
             <div className="bottom-btns">
-                <a href="#" onClick={stakeSomeHandler}>{staking ? 'STAKING...' : 'STAKE (' + totalStake + ')' }</a>
-                <a href="#" onClick={stakeAllHandler}>STAKE ALL</a>
-                <a href="#" onClick={unStakeHandler}>{unStaking ? 'UNSTAKING...' : 'UNSTAKE (' + totalremoveStake + ')'}</a>
+                <a onClick={stakeSomeHandler}>{staking ? 'STAKING...' : 'STAKE (' + totalStake + ')' }</a>
+                <a onClick={stakeAllHandler}>STAKE ALL</a>
+                <a onClick={unStakeHandler}>{unStaking ? 'UNSTAKING...' : 'UNSTAKE (' + totalremoveStake + ')'}</a>
             </div>
             <div className="group-arrow">
               <div className="arrow-stake"></div>
