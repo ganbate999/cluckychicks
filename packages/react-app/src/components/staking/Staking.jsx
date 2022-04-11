@@ -102,7 +102,7 @@ export default function Staking({
   }, [address, contract]);
 
   useEffect(() => {
-    async function setNFTslideData(){
+    function setNFTslideData(){
       setNFTState(setNFTData());
     }
     setNFTslideData();

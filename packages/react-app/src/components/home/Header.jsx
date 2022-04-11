@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import "./style.css";
 import { ConnectWallet } from "./";
 import { HomePage } from "../../pages/HomePage"
@@ -18,14 +19,14 @@ export default function Header({
     contract,
     signer,
     remainTokenCount,
-  }) {
+}) {
 
-const [mobilemenuOpen, setMobileMenuOpen] = useState(false);
-const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobilemenuOpen);
-}
+    const [mobilemenuOpen, setMobileMenuOpen] = useState(false);
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobilemenuOpen);
+    }
 
-  return (
+    return (
         <div className="headerContainer">
             <header className="header">
                 <div className="head-contact">
@@ -50,18 +51,18 @@ const toggleMobileMenu = () => {
                 </div>
                 <div className="connectwallet-btn">
                     <ConnectWallet
-                    address={address}
-                    localProvider={localProvider}
-                    userSigner={userSigner}
-                    mainnetProvider={mainnetProvider}
-                    price={price}
-                    web3Modal={web3Modal}
-                    loadWeb3Modal={loadWeb3Modal}
-                    logoutOfWeb3Modal={logoutOfWeb3Modal}
-                    blockExplorer={blockExplorer}
-                    contract={contract}
-                    signer={userSigner}
-                    remainTokenCount={remainTokenCount}
+                        address={address}
+                        localProvider={localProvider}
+                        userSigner={userSigner}
+                        mainnetProvider={mainnetProvider}
+                        price={price}
+                        web3Modal={web3Modal}
+                        loadWeb3Modal={loadWeb3Modal}
+                        logoutOfWeb3Modal={logoutOfWeb3Modal}
+                        blockExplorer={blockExplorer}
+                        contract={contract}
+                        signer={userSigner}
+                        remainTokenCount={remainTokenCount}
                     />
                 </div>
             </header>
@@ -80,29 +81,30 @@ const toggleMobileMenu = () => {
 
                     <div className={`mobile_ul ${!mobilemenuOpen ? "collapsed" : ""}`}>
                         <ul>
-                            <li><Link to="/">HOME</Link></li>
-                            <li><a href="/#mintContainer">MINT</a></li>
-                            <li><Link to="/staking">STAKE</Link></li>
-                            <li><a href="/#stakeContainer">JOIN</a></li>
-                            <li><a href="/#roadmapContainer">ROADMAP</a></li>
-                            <li><a href="/#faqContainer">FAQ</a></li>
+                            <li><HashLink to="/">HOME</HashLink></li>
+                            <li><HashLink to="/#mintContainer">MINT</HashLink></li>
+                            <li><HashLink to="/staking">STAKE</HashLink></li>
+                            <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
+                            <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
+                            <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="desktopMenu">
                     <ul>
-                        <li><Link to="/">HOME</Link></li>
-                        <li><a href="/#mintContainer">MINT</a></li>
-                        <li><Link to="/staking">STAKE</Link></li>
-                        <li><a href="/#stakeContainer">JOIN</a></li>
-                        <li><a href="/#roadmapContainer">ROADMAP</a></li>
-                        <li><a href="/#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li>
+                        <li><HashLink to="/">HOME</HashLink></li>
+                        <li><HashLink to="/#mintContainer">MINT</HashLink></li>
+                        <li><HashLink to="/staking">STAKE</HashLink></li>
+                        <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
+                        <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
+                        <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
+                        {/* <li><a href="/#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li> */}
                     </ul>
                 </div>
-                
+
                 <div className="arrow bottom_arr"></div>
             </div>
         </div>
-  );
+    );
 }
