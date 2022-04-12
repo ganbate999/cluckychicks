@@ -31,7 +31,7 @@ export default function RoadMap() {
                 <img src="./assets/image/Eggies.png" width="100%" />
                 <div className="staking-economy-txt">
                   <h2>STAKING + ECONOMY</h2>
-                  <p>The birth of the Cluckyverse economy through use of the Staking + $CluckyEggs reward distribution.</p>
+                  <p>The birth of the Cluckyverse economy through use of the Staking + $EGG reward distribution.</p>
                 </div>
               </div>
               <div className="chick-factory"> 
@@ -55,7 +55,7 @@ export default function RoadMap() {
             <div className="innerown-text">
               <h2>EARN</h2>
               <p>
-                Clucky Chicks can be staked to earn $CluckyEggs, which are our Cluckyversetoken. This enables marketplace purchases such as leveling your NFT, naming your Chick + adding a personal Backstory. <br /> 
+                Clucky Chicks can be staked to earn $EGG, which are our Cluckyversetoken. This enables marketplace purchases such as leveling your NFT, naming your Chick + adding a personal Backstory. <br /> 
                 Plus future gaming bonuses or even exclusive future NFT mints.
               </p>
             </div>
