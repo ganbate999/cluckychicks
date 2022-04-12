@@ -545,7 +545,7 @@ function App() {
   // const onlineStatus = useOnlineStatus();
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <Switch>
           <Route exact path="/">
@@ -586,7 +586,7 @@ function App() {
           }} />
         </Switch>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
