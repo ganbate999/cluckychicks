@@ -564,7 +564,7 @@ function App() {
               remainTokenCount={remainTokenCount}
             />
           </Route>
-          <Route exact path="/staking">
+          <Route path="/staking">
             <StakingPage
               address={address}
               localProvider={localProvider}
