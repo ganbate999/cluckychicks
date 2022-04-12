@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { HashRouter, BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {HashRouter as Router, Switch, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 import HomePage from './pages/HomePage';
 import StakingPage from './pages/StakingPage';
@@ -545,7 +545,7 @@ function App() {
   // const onlineStatus = useOnlineStatus();
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="App">
         <Switch>
           <Route exact path="/">
@@ -586,7 +586,7 @@ function App() {
           }} />
         </Switch>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
