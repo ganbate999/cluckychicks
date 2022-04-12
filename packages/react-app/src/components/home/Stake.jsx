@@ -118,7 +118,7 @@ export default function Stake({
           <p>While also vying for the attention of other Chicks, to prove who is the most badass motherclucker. Fights will ensure!</p>
           <p>Your NFT will unlock access to the Coop, where you can stake your Chicks, talk to all other holders, plan duels and enter the Cluckyverse.</p>
           <p>As well as play our upcoming suite of competitive PVP and P2E games.</p>
-          <a href="/#/discord" target="_blank">
+          <a href="/discord" target="_blank">
             <img src='./assets/image/discord1.png' width='20px' height='20px' style={{ marginRight: '20px' }} />
             JOIN THE COOP
           </a>

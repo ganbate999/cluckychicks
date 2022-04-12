@@ -19,7 +19,7 @@ export default function Faq() {
             Background, Aura, Body, Clothing, Face, Eyes / Eyewear, Head, Weapon and Accessory.</p>
         </Accordion>
         <Accordion title="WHERE CAN WE TALK TO YOU?" index={3} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
-            <p>You can either tweet me at <a href='https://twitter.com/CluckyChicksNFT'>@CluckyChicksNFT</a> on Twitter. Or preferably join our Discord at <a href="/#/discord" target="_blank"> https://cluckychicks.app/discord</a> for a chat! <br /> 
+            <p>You can either tweet me at <a href='https://twitter.com/CluckyChicksNFT'>@CluckyChicksNFT</a> on Twitter. Or preferably join our Discord at <a href="/discord" target="_blank"> https://cluckychicks.app/discord</a> for a chat! <br /> 
             If you wish to contact privately, email to <a href='mailto:paul@cluckychicks.app'>Paul@CluckyChicks.app</a>.</p>
         </Accordion>
         <Accordion title="WHAT IS THE SMART CONTRACT ADDRESS OF CLUCKY CHICKS?" index={4} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>

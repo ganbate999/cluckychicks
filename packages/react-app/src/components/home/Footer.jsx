@@ -8,7 +8,7 @@ export default function Footer() {
         <p>© 2022 CLUCKY CHICKS</p>
       </div>
       <div className="footer-contact">
-        <a href="/#/discord" target="_blank">
+        <a href="/discord" target="_blank">
           <span className="foot-twitter">
               <img src='./assets/image/discord.png' width='20px' height='20px' />
           </span>
