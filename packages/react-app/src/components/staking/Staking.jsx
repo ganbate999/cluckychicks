@@ -232,7 +232,7 @@ export default function Staking({
               <div className="staking-nft-list" key={index}>
                 <p>#{data.tokenId}</p>
                 <img src={data.imageUrl} width="200px" height="200px" />
-                <p>{(data.tokenId < 7) ? "3":(data.tokenId < 50) ? "2" : "1"} $EGG / Day</p>
+                <p>{(data.tokenId < 7) ? "3":(data.tokenId < 51) ? "2" : "1"} $EGG / Day</p>
 
                 <StakeButton
                   isStaked={data.isStaked}
