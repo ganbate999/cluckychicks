@@ -67,7 +67,7 @@ export default function RoadMap() {
             <div className="innerown-text">
               <h2>PLAY</h2>
               <p>
-                Clucky Chicks are not just an NFT that is awesome to look at. We are in the process of creating full blown games to untilize them in. <br /> 
+                Clucky Chicks are not just an NFT that is awesome to look at. We are in the process of creating full blown games to utilise them in. <br /> 
                 These will range from our 2D competitive 'Clucky Game', up to our 3D 'Ckuckyverse Arcade'. Get ready to play together and have some fun.</p>
             </div>
           </div>
