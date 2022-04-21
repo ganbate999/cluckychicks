@@ -18,7 +18,7 @@ export default function Team() {
               </p>
             </div>
             <div className="">
-              <a href="https://Twitter.com/paulbryantv">
+              <a href="https://Twitter.com/paulbryantv" target="_blank">
                 <span className="team-twitter">
                     <img src='./assets/image/twitter.png'/>
                 </span>
@@ -35,7 +35,7 @@ export default function Team() {
                 </p>
               </div>
               <div className="">
-                <a href="https://Twitter.com/bangagus_online">
+                <a href="https://Twitter.com/bangagus_online" target="_blank">
                   <span className="team-twitter">
                       <img src='./assets/image/twitter.png' />
                   </span>
@@ -52,7 +52,7 @@ export default function Team() {
               </p>
             </div>
             <div className="">
-              <a href="https://www.linkedin.com/in/akira-mori">
+              <a href="https://www.linkedin.com/in/akira-mori" target="_blank">
                 <span className="team-twitter">
                     <img src='./assets/image/linkedin_1.png' />
                 </span>
