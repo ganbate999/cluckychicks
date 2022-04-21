@@ -27,7 +27,7 @@ export default function Team() {
           </div>
 
           <div className="artist">
-            <img src="./assets/image/artist.png" />
+            <img src="./assets/image/artist.jpg" />
               <h2>BANGAGUS</h2>
               <div className="team-text">
                 <p>
