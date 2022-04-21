@@ -800,6 +800,40 @@
     }
 }
 
+/* Team style */
+.teamContainer {
+    border-bottom: 3px solid #000;
+    padding-bottom: 20px;
+}
+
+.teamContainer h1 {
+    font-family: "Titan One", Sans-serif;
+    font-size: 50px;
+    text-decoration: underline;
+    font-weight: inherit;
+    color: #000;
+    margin: 20px 0 30px 0;
+}
+
+.team-list img {
+    border: 3px solid #000;
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+.team-twitter{
+    width: fit-content;
+    height: fit-content;
+}
+
+.team-twitter img{
+    width: 40px;
+    height: 40px;
+}
+
+.team-text{
+    margin: 0px;
+}
 /* FAQ style */
 
 .faqContainer h1 {

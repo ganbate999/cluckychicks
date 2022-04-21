@@ -86,6 +86,7 @@ export default function Header({
                             <li><HashLink to="/staking">STAKE</HashLink></li>
                             <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
                             <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
+                            <li><HashLink to="/#teamContainer">TEAM</HashLink></li>
                             <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
                         </ul>
                     </div>
@@ -98,6 +99,7 @@ export default function Header({
                         <li><HashLink to="/staking">STAKE</HashLink></li>
                         <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
                         <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
+                        <li><HashLink to="/#teamContainer">TEAM</HashLink></li>
                         <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
                         {/* <li><a href="/#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li> */}
                     </ul>

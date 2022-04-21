@@ -4,6 +4,7 @@ export { default as Stake } from "./Stake";
 export { default as NFTSlider } from "./NFTSlider";
 export { default as RoadMap } from "./RoadMap";
 export { default as CluckyVerse } from "./CluckyVerse";
+export { default as Team } from "./Team";
 export { default as Faq } from "./Faq";
 export { default as Footer } from "./Footer";
 
