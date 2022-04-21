@@ -9,7 +9,7 @@ export default function Team() {
       <div className="team-list">
         
         <div className="verseBox">
-          <div className="pixelVerse">
+          <div className="founder">
             <img src="./assets/image/founder.jpg" />
             <h2>PAUL B.</h2>
             <div className="team-text">
@@ -26,7 +26,7 @@ export default function Team() {
             </div>
           </div>
 
-          <div className="Verse2D">
+          <div className="artist">
             <img src="./assets/image/artist.png" />
               <h2>BANGAGUS</h2>
               <div className="team-text">
@@ -43,7 +43,7 @@ export default function Team() {
               </div>
           </div>
 
-          <div className="Verse3D">
+          <div className="dev">
             <img src="./assets/image/dev.jpg" />
             <h2 className="team-text">AKIRA M.</h2>
             <div className="team-text">

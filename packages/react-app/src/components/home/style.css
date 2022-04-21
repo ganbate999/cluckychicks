@@ -792,6 +792,10 @@
         width: 95%;
         margin: 0 10px;
     }
+    .founder, .artist, .dev {
+        width: 95%;
+        margin: 0 10px;
+    }
     .flow {
         bottom: -1px;
     }
@@ -827,13 +831,40 @@
 }
 
 .team-twitter img{
-    width: 40px;
+    width: 40px !important; 
     height: 40px;
 }
 
 .team-text{
     margin: 0px;
 }
+
+.founder, .artist, .dev {
+    width: 33%;
+    padding: 10px;
+}
+
+.founder img, .artist img, .dev img {
+    width: 70%;
+    transition-duration: 0.3s;
+}
+.founder h2, .artist h2, .dev h2 {
+    font-family: "Titan One", Sans-serif;
+    font-size: 25px;
+    line-height: 1.4;
+    font-weight: inherit;
+    color: #000;
+    margin-top: 20px;
+
+}
+.founder p, .artist p, .dev p {
+    font-family: "Exo 2", Sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    line-height: 1.8;
+}
+
 /* FAQ style */
 
 .faqContainer h1 {
