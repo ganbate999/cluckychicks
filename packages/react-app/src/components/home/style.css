@@ -834,6 +834,7 @@
 .team-twitter img{
     width: 40px !important; 
     height: 40px;
+    border-radius: 20px;
 }
 
 .team-text{
