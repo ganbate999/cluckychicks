@@ -309,7 +309,7 @@
 /* Terms of Service style */
 .ant-modal-header {
     background: #ffe14b !important;
-
+    border-bottom: none !important;
 }
 
 .ant-modal-title {
@@ -330,6 +330,7 @@
 
 .ant-modal-footer {
     background: #ffe14b !important;
+    border-top: none !important;
 }
 
 .ant-modal-body::-webkit-scrollbar {

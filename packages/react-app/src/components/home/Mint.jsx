@@ -67,13 +67,12 @@ export default function Mint({
         title="TERMS OF SERVICE"
         centered
         footer={[
-          <Button key="back" onClick={() => setModalVisible(false)} style={{backgroundColor: '#000', color: '#ffe14b', borderRadius: '7px', border: 'none'}}>
-            Cancel
-          </Button>,
-          <Button key="submit" disabled={!termchecked} onClick={mintNftHandler} style={{backgroundColor: termchecked ? 'black': 'grey', color: '#ffe14b', borderRadius: '7px', border: 'none'}}>
-            Mint
+          <Button key="submit" disabled={!termchecked} onClick={() => setModalVisible(false)} style={{backgroundColor: termchecked ? 'black': 'grey', color: '#ffe14b', borderRadius: '7px', border: 'none'}}>
+            Ok
           </Button>
         ]}
+        onOk={() => setModalVisible(false)}
+        onCancel={() => setModalVisible(false)}
       >
         <h3>1. Introduction to the Clucky Chicks!</h3>
         <p>Clucky Chicks is a collection of 10,000 characters created by Paul B. and the team, with the expectation that they will bring a smile to the face of everyone who sees them! Thank you for visiting our terms and if you have any questions feel free to reach out to us in the Discord or on Twitter. We will be happy to chat.</p>
@@ -118,7 +117,7 @@ export default function Mint({
             checked={termchecked}
             onClick={() => setTermChecked(!termchecked)}
           >
-            I agree with this
+            I agree with this and will press mint button again.
           </Checkbox>
         </p>
       </Modal>
@@ -135,7 +134,12 @@ export default function Mint({
 
 
             <div className="mint-btn">
-              <a onClick={() => setModalVisible(true)}>MINT</a>
+              {termchecked && 
+               <a onClick={mintNftHandler}>MINT</a> 
+              }
+              {!termchecked && 
+               <a onClick={() => setModalVisible(true)}>MINT</a> 
+              }
             </div>
           </div>
         )
