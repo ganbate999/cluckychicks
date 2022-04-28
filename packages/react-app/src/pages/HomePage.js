@@ -1,5 +1,5 @@
 import React from "react";
-import {Header, Mint, Stake, NFTSlider, RoadMap, CluckyVerse, Team, Faq, Footer} from "../components/home";
+import {Header, Mint, Stake, NFTSlider, RoadMap, CluckyVerse, Team, Faq, Term, Footer} from "../components/home";
 
 function HomePage(props) {
     return (
