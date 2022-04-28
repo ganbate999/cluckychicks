@@ -346,9 +346,6 @@
     border-radius: 100px;
 }
 
-.ant-checkbox .ant-checkbox-inner {
-}
-
 
 /* Stake style */
 .stakeContainer {
@@ -1032,10 +1029,11 @@
     height: fit-content;
 }
 
-.team-twitter img {
-    width: 40px !important;
-    height: 40px;
-    border-radius: 20px;
+.team-twitter img{
+    width: 60px !important; 
+    height: 60px;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 .team-text {
