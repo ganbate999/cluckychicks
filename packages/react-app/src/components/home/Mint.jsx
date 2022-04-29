@@ -68,7 +68,7 @@ export default function Mint({
         centered
         footer={[
           <Button key="submit" disabled={!termchecked} onClick={() => setModalVisible(false)} style={{backgroundColor: termchecked ? 'black': 'grey', color: '#ffe14b', borderRadius: '7px', border: 'none'}}>
-            Ok
+            Accept
           </Button>
         ]}
         onOk={() => setModalVisible(false)}
