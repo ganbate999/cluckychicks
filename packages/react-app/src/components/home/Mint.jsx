@@ -122,7 +122,7 @@ export default function Mint({
         </p>
       </Modal>
       {
-        (false && web3Modal && web3Modal.cachedProvider) && (
+        (web3Modal && web3Modal.cachedProvider) && (
           <div className="mint-part">
             <h2>{10000 - remainTokenCount}/10000</h2>
             <div className="mint-count">
