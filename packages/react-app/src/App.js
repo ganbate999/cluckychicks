@@ -49,7 +49,7 @@ const { ethers } = require("ethers");
 /// 📡 What chain are your contracts deployed to?
 
 // 😬 Sorry for all the console logging
-const DEBUG = true;
+const DEBUG = false;
 const NETWORKCHECK = true;
 const targetNetwork = NETWORKS.mainnet;
 // 🛰 providers
