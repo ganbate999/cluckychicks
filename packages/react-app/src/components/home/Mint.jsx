@@ -169,7 +169,7 @@ export default function Mint({
                <a onClick={mintNftHandler}>MINT</a> 
               }
               {termchecked && minting &&
-               <a onClick={mintNftHandler}>MINTing...</a> 
+               <a onClick={mintNftHandler}>MINTING...</a> 
               }
               {!termchecked && 
                <a onClick={() => setModalVisible(true)}>MINT</a> 
