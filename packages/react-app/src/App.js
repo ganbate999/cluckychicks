@@ -444,19 +444,19 @@ function App() {
       );
     }
   } else {
-    networkDisplay = (
-      <div
-        style={{
-          zIndex: -1,
-          position: "absolute",
-          right: 154,
-          top: 28,
-          padding: 16,
-          color: targetNetwork.color,
-        }}
-      >
-        {targetNetwork.name}
-      </div>
+    networkDisplay = (""
+      // <div
+      //   style={{
+      //     zIndex: -1,
+      //     position: "absolute",
+      //     right: 154,
+      //     top: 28,
+      //     padding: 16,
+      //     color: targetNetwork.color,
+      //   }}
+      // >
+      //   {targetNetwork.name}
+      // </div>
     );
   }
 
@@ -585,6 +585,7 @@ function App() {
             return null;
           }} />
         </Switch>
+        {networkDisplay}
       </div>
     </HashRouter>
   );

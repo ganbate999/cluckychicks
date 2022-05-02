@@ -1,6 +1,8 @@
 import { Button } from "antd";
 import React from "react";
 import './style.css';
+import Address from "./Address"
+
 
 export default function ConnectWallet({
   address,
@@ -40,7 +42,7 @@ export default function ConnectWallet({
           className="connect_status light"
           onClick={logoutOfWeb3Modal}
         >
-          DISCONNECT
+          DISCONNECT  <Address size="short" address={address} ensProvider={mainnetProvider} blockExplorer={blockExplorer} />
         </Button>,
       );
     } else {

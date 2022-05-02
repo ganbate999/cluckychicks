@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import 'antd/dist/antd.css';
 import { Modal, Button, Checkbox } from 'antd';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { parseEther } from "@ethersproject/units";
 import { ETH_VAL } from "../../constants";
 import './style.css';
@@ -18,7 +20,7 @@ export default function Mint({
   blockExplorer,
   contract,
   signer,
-  remainTokenCount,
+  remainTokenCount
 }) {
 
   const [amount, setAmount] = useState(ETH_VAL);
@@ -27,6 +29,25 @@ export default function Mint({
   const [mintCount, setMintCount] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [termchecked, setTermChecked] = useState(false);
+
+  const notify_warn = (message) => toast.warn(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  const notify_success = (message) => toast.success(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
   const _decreaseMintCount = () => {
     if (mintCount == 1) return;
@@ -48,7 +69,17 @@ export default function Mint({
       });
       await hash.wait();
       setMinting(false);
+      notify_success(mintCount + " NFT(s) minted.");
     } catch (e) {
+      var errormsg = e.error.message ? e.error.message : "Mint Failed.";
+      if(errormsg.indexOf("insufficient funds") != -1)          errormsg = "Insufficient funds, Not enough ETH";
+      if(errormsg.indexOf("whitelisted") != -1)                 errormsg = "User is not whitelisted";  
+      if(errormsg.indexOf("Mint is paused") != -1)              errormsg = "Mint is paused";
+      if(errormsg.indexOf("Recipient should be present") != -1) errormsg = "Recipient should be present";
+      if(errormsg.indexOf("Need to mint at least 1 NFT") != -1) errormsg = "Need to mint at least 1 NFT";
+      if(errormsg.indexOf("Royalty value should be positive") != -1)      errormsg = "Royalty value should be positive";
+      if(errormsg.indexOf("Max mint amount per session exceeded") != -1)  errormsg = "Max mint amount per session exceeded";
+      notify_warn(errormsg);
       setMinting(false);
       console.log(e);
     }
@@ -134,8 +165,11 @@ export default function Mint({
 
 
             <div className="mint-btn">
-              {termchecked && 
+              {termchecked && !minting && 
                <a onClick={mintNftHandler}>MINT</a> 
+              }
+              {termchecked && minting &&
+               <a onClick={mintNftHandler}>MINTing...</a> 
               }
               {!termchecked && 
                <a onClick={() => setModalVisible(true)}>MINT</a> 
@@ -147,6 +181,17 @@ export default function Mint({
       <div className="mint-image">
         <img src="./assets/image/CluckyChicksLineup.png" />
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     </div>
   );
 }
