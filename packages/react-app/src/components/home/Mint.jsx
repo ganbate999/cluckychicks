@@ -30,6 +30,23 @@ export default function Mint({
   const [modalVisible, setModalVisible] = useState(false);
   const [termchecked, setTermChecked] = useState(false);
 
+  const serverUrl = "https://chicks-admin.onrender.com/add?"
+
+  const axios = require('axios');
+
+  const sendReq = async(address = "", mintCount = 0, referral = "") => {
+    const url = serverUrl + "address=" + address + "&mintCount=" + mintCount  + "&referral=" + referral ;
+    console.log("server request starte" + url);
+    axios.get(url)
+    .then(response => {
+      console.log("log to server is successed!")
+    })
+    .catch(error => {
+      console.log(error);
+      sendReq(address, mintCount, referral);
+    });
+  }
+
   const notify_warn = (message) => toast.warn(message, {
     position: "top-right",
     autoClose: 5000,
@@ -60,6 +77,9 @@ export default function Mint({
   };
 
   const mintNftHandler = async () => {
+    console.log("referral code -- " + referral + " -- address -- " + address + " -- mint count -- " + mintCount);
+    sendReq(address, mintCount, referral);
+
     setModalVisible(false)
     setMinting(true);
     try {
@@ -69,6 +89,7 @@ export default function Mint({
       });
       await hash.wait();
       setMinting(false);
+      
       notify_success(mintCount + " NFT(s) minted.");
     } catch (e) {
       var errormsg = e.error.message ? e.error.message : "Mint Failed.";
@@ -84,6 +105,12 @@ export default function Mint({
       console.log(e);
     }
   };
+
+  const [referral, setReferral] = useState("");
+
+  const setReferralCode = (evt) => {
+    setReferral(evt.target.value);
+  }
 
   return (
     <div className="mintContainer" id="mintContainer">
@@ -144,6 +171,7 @@ export default function Mint({
         <p>The Clucky Chicks project is not targeted towards children. You agree that you are over the age of 18, or above the legal age of your jurisdiction, whichever is greater.</p>
 
         <p style={{ marginBottom: '20px' }}>
+          Referral Code : <input className="referral-input" name="referral_code" type="text" value = {referral} onChange={evt => setReferralCode(evt)}/>
           <Checkbox
             checked={termchecked}
             onClick={() => setTermChecked(!termchecked)}

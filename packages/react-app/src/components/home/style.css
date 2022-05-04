@@ -295,6 +295,11 @@
     cursor: pointer;
 }
 
+.referral-input {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
 @media (max-width: 768px) {
     .mintTitle {
         font-size: 39px;
