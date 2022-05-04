@@ -182,7 +182,7 @@ export default function Mint({
       {
         (web3Modal && web3Modal.cachedProvider) && (
           <div className="mint-part">
-            <h2>{10000 - remainTokenCount}/10000</h2>
+            {/* <h2>{10000 - remainTokenCount}/10000</h2> */}
             <div className="mint-count">
               <a onClick={_decreaseMintCount}>-</a>
               <h2>{mintCount}</h2>
