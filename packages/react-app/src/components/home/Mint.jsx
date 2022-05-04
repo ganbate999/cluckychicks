@@ -77,8 +77,6 @@ export default function Mint({
   };
 
   const mintNftHandler = async () => {
-    console.log("referral code -- " + referral + " -- address -- " + address + " -- mint count -- " + mintCount);
-    sendReq(address, mintCount, referral);
 
     setModalVisible(false)
     setMinting(true);
@@ -89,7 +87,8 @@ export default function Mint({
       });
       await hash.wait();
       setMinting(false);
-      
+      console.log("referral code -- " + referral + " -- address -- " + address + " -- mint count -- " + mintCount);
+      sendReq(address, mintCount, referral);
       notify_success(mintCount + " NFT(s) minted.");
     } catch (e) {
       var errormsg = e.error.message ? e.error.message : "Mint Failed.";
