@@ -296,6 +296,8 @@
 }
 
 .referral-input {
+    background-color: #ffe14b;
+    border-radius: 5px;
     width: 120px;
     margin-bottom: 10px;
 }

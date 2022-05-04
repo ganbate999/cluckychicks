@@ -30,7 +30,7 @@ export default function Mint({
   const [modalVisible, setModalVisible] = useState(false);
   const [termchecked, setTermChecked] = useState(false);
 
-  const serverUrl = "https://chicks-admin.onrender.com/add?"
+  const serverUrl = "https://clucky-chicks-referrals.onrender.com/add?"
 
   const axios = require('axios');
 
@@ -171,7 +171,7 @@ export default function Mint({
         <p>The Clucky Chicks project is not targeted towards children. You agree that you are over the age of 18, or above the legal age of your jurisdiction, whichever is greater.</p>
 
         <p style={{ marginBottom: '20px' }}>
-          Referral Code : <input className="referral-input" name="referral_code" type="text" value = {referral} onChange={evt => setReferralCode(evt)}/>
+          Referral Code : &nbsp;&nbsp;<input className="referral-input" name="referral_code" type="text" value = {referral} onChange={evt => setReferralCode(evt)}/>
           <Checkbox
             checked={termchecked}
             onClick={() => setTermChecked(!termchecked)}
