@@ -116,7 +116,7 @@ export default function Mint({
       <div className="mint-title">
         {/* <p className="mintTitle">MINTING - APR 2022</p> */}
         <p className="mintTitle">Mint your Clucky Chick</p>
-        <p className="mintSubtitle">CLUCKY CHICKS COST 0.05ETH.</p>
+        <p className="mintSubtitle">CLUCKY CHICKS COST 0.03ETH.</p>
         {!web3Modal.cachedProvider && (<p className="mintSubtitle1"> CONNECT TO THE ETHEREUM NETWORK.</p>)}
       </div>
       <Modal
