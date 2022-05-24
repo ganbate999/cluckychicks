@@ -1,5 +1,5 @@
 import React from "react";
-import {Header, Mint, Stake, NFTSlider, RoadMap, CluckyVerse, Team, Faq, Term, Footer} from "../components/home";
+import {Header, Mint, Stake, NFTSlider, CluckyComics, RoadMap, CluckyVerse, Team, Faq, Term, Footer} from "../components/home";
 
 function HomePage(props) {
     return (
@@ -8,6 +8,7 @@ function HomePage(props) {
           <Mint {...props} />
           <Stake {...props} />
           <NFTSlider />
+          <CluckyComics />
           <RoadMap />
           <CluckyVerse />
           <Team />

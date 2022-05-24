@@ -115,8 +115,8 @@ export default function Stake({
         <div className="joinText">
           <h1>JOIN THE CLUCKY CHICKS</h1>
           <p>An anime-inspired alternative universe, where Cluck Chicks are fighting to save the planet from invading Robot overlords.</p>
-          <p>While also vying for the attention of other Chicks, to prove who is the most badass motherclucker. Fights will ensue!</p>
-          <p>Your NFT will unlock access to the Coop, where you can stake your Chicks, talk to all other holders, plan duels and enter the Cluckyverse.</p>
+          <p>Your NFT will unlock access to the Coop, where you can stake your Chicks, talk to all other holders, plan duels and enter the Cluckyverse. Plus voting in our <a className="dao_link" href="https://snapshot.org/#/clucky.eth">DAO</a>.</p>
+          <p>This will give you the opportunity to be chosen to be a part of our Clucky Comics series and earn residual passive income.</p>
           <p>As well as play our upcoming suite of competitive PVP and P2E games.</p>
           <a href="/discord" target="_blank">
             <img src='./assets/image/discord1.png' width='20px' height='20px' style={{ marginRight: '20px' }} />

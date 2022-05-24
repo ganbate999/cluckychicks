@@ -3,6 +3,7 @@ export { default as Mint } from "./Mint";
 export { default as Stake } from "./Stake";
 export { default as NFTSlider } from "./NFTSlider";
 export { default as RoadMap } from "./RoadMap";
+export { default as CluckyComics } from "./CluckyComics";
 export { default as CluckyVerse } from "./CluckyVerse";
 export { default as Team } from "./Team";
 export { default as Faq } from "./Faq";
