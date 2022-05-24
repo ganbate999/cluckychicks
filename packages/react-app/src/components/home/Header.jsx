@@ -85,9 +85,11 @@ export default function Header({
                             <li><HashLink to="/#mintContainer">MINT</HashLink></li>
                             <li><HashLink to="/staking">STAKE</HashLink></li>
                             <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
+                            <li><HashLink to="/#cluckycomicsContainer">COMICS</HashLink></li>
                             <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
                             <li><HashLink to="/#teamContainer">TEAM</HashLink></li>
                             <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
+                            <li><a href="https://snapshot.org/#/clucky.eth">DAO</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,9 +100,11 @@ export default function Header({
                         <li><HashLink to="/#mintContainer">MINT</HashLink></li>
                         <li><HashLink to="/staking">STAKE</HashLink></li>
                         <li><HashLink to="/#stakeContainer">JOIN</HashLink></li>
+                        <li><HashLink to="/#cluckycomicsContainer">COMICS</HashLink></li>
                         <li><HashLink to="/#roadmapContainer">ROADMAP</HashLink></li>
                         <li><HashLink to="/#teamContainer">TEAM</HashLink></li>
                         <li><HashLink to="/#faqContainer">FAQ</HashLink></li>
+                        <li><a href="https://snapshot.org/#/clucky.eth">DAO</a></li>
                         {/* <li><a href="/#faqContainer" style={{ transition: '0.5s' }}>FAQ</a></li> */}
                     </ul>
                 </div>
