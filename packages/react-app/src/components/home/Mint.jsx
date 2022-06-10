@@ -127,8 +127,8 @@ export default function Mint({
     <div className="mintContainer" id="mintContainer">
       <div className="mint-title">
         {/* <p className="mintTitle">MINTING - APR 2022</p> */}
-        <p className="mintTitle">Mint your FREE Chick</p>
-        <p className="mintSubtitle">First Mint is FREE. If you own a Chick, all subsequent Chicks are 0.01 ETH in Phase 1</p>
+        <p className="mintTitle">Mint your 1 Cent Chick</p>
+        <p className="mintSubtitle">First Mint is only 1 Cent! If you own a Chick, all subsequent Chicks are 0.01 ETH in Phase 1</p>
         {!web3Modal.cachedProvider && (<p className="mintSubtitle1"> CONNECT TO THE ETHEREUM NETWORK.</p>)}
       </div>
       <Modal
