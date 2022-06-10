@@ -20,7 +20,8 @@ export default function Mint({
   blockExplorer,
   contract,
   signer,
-  remainTokenCount
+  remainTokenCount,
+  balanceOf
 }) {
 
   const [amount, setAmount] = useState(ETH_VAL);
@@ -80,10 +81,21 @@ export default function Mint({
 
     setModalVisible(false)
     setMinting(true);
+    var mintCost;
+    if(mintCount < 1) {
+      notify_warn("Please set NFT count correctly as many as you want.");
+      return;
+    }
+    if(balanceOf > 0){
+      mintCost = parseEther((amount * mintCount).toString());
+    }else{
+      mintCost = parseEther((amount * (mintCount-1)).toString());
+    }
+
     try {
       const mintFunction = contract["Chicks"].connect(signer)["mint"];
       const hash = await mintFunction(address, mintCount, {
-        value: parseEther((amount * mintCount).toString()),
+        value: mintCost,
       });
       await hash.wait();
       setMinting(false);

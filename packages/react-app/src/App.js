@@ -536,10 +536,19 @@ function App() {
     if (objTokenCount != undefined) {
       setTokenCount(parseInt(objTokenCount["_hex"]));
     }
-    console.log(
-      "~~~~~~~~~~~~~~~~~~~~~~~ " + objTokenCount + "@" + remainTokenCount
-    );
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~ " + objTokenCount + "@" + remainTokenCount);
   }, [objTokenCount]);
+
+
+  const objBalanceOf = useContractReader(readContracts,"Chicks","balanceOf");
+  const [balanceOf, setBalanceOf] = useState(0);
+
+  useEffect(() => {
+    if (objBalanceOf != undefined) {
+      setBalanceOf(parseInt(objBalanceOf["_hex"]));
+    }
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~ " + objBalanceOf + "@" + balanceOf);
+  }, [objBalanceOf]);
 
 
   // const onlineStatus = useOnlineStatus();
@@ -562,6 +571,7 @@ function App() {
               contract={readContracts}
               signer={userSigner}
               remainTokenCount={remainTokenCount}
+              balanceOf={balanceOf}
             />
           </Route>
           <Route path="/staking">
