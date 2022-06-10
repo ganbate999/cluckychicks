@@ -89,7 +89,7 @@ export default function Mint({
     if(balanceOf > 0){
       mintCost = parseEther((amount * mintCount).toString());
     }else{
-      mintCost = parseEther((amount * (mintCount-1)).toString());
+      mintCost = parseEther((amount * (mintCount-1) + 0.00001).toString());
     }
 
     try {
@@ -127,8 +127,8 @@ export default function Mint({
     <div className="mintContainer" id="mintContainer">
       <div className="mint-title">
         {/* <p className="mintTitle">MINTING - APR 2022</p> */}
-        <p className="mintTitle">Mint your Clucky Chick</p>
-        <p className="mintSubtitle">CLUCKY CHICKS COST 0.03ETH.</p>
+        <p className="mintTitle">Mint your FREE Chick</p>
+        <p className="mintSubtitle">First Mint is FREE. If you own a Chick, all subsequent Chicks are 0.01 ETH in Phase 1</p>
         {!web3Modal.cachedProvider && (<p className="mintSubtitle1"> CONNECT TO THE ETHEREUM NETWORK.</p>)}
       </div>
       <Modal

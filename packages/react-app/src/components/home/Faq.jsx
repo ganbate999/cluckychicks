@@ -12,7 +12,7 @@ export default function Faq() {
           <p>Clucky Chicks is a collection of 10,000 unique hand drawn NFTs on the Ethereum Blockchain. Each one is badass and in great shape! Ready to take on the Cluckyverse and it’s variants!</p>
         </Accordion>
         <Accordion title="HOW MUCH DO CLUCKY CHICKS COST?" index={1} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
-          <p>The OG collection of Clucky Chicks are launching at only 0.03 ETH. The price will slowly raise through each launch phase, so getting in early is more beneficial. We want to promote a profitable and stable floor for all holders over time.</p>
+          <p>The OG collection of Clucky Chicks are launching at only 0.01 ETH. The price will slowly raise through each launch phase, so getting in early is more beneficial. We want to promote a profitable and stable floor for all holders over time.</p>
         </Accordion>
         <Accordion title="HOW WERE CLUCKY CHICKS CREATED?" index={2} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
           <p>Clucky Chicks are generated algorithmically by mixing up a variety of hand drawn properties with different rarities in the following categories:<br />
