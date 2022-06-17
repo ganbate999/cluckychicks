@@ -540,7 +540,7 @@ function App() {
   }, [objTokenCount]);
 
 
-  const objBalanceOf = useContractReader(readContracts,"Chicks","balanceOf");
+  const objBalanceOf = useContractReader(readContracts,"Chicks","balanceOf", [address]);
   const [balanceOf, setBalanceOf] = useState(0);
 
   useEffect(() => {
